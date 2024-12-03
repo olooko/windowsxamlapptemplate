@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsXamlAppTemplate.WPF", "WindowsXamlAppTemplate.WPF\WindowsXamlAppTemplate.WPF.csproj", "{22E160C5-8C50-4A6B-BBEE-6F872AFB1B72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsXamlApp.Template.WPF", "WindowsXamlApp.Template.WPF\WindowsXamlApp.Template.WPF.csproj", "{22E160C5-8C50-4A6B-BBEE-6F872AFB1B72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsXamlAppTemplate.WinUI", "WindowsXamlAppTemplate.WinUI\WindowsXamlAppTemplate.WinUI.csproj", "{46A6E95B-DD44-4466-9943-590ABE97D794}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsXamlApp.Template.WinUI", "WindowsXamlApp.Template.WinUI\WindowsXamlApp.Template.WinUI.csproj", "{46A6E95B-DD44-4466-9943-590ABE97D794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

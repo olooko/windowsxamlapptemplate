@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace WindowsXamlAppTemplate.WPF
+namespace WindowsXamlApp.Template.WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml

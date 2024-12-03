@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "WindowsXamlAppTemplate.WinUI (Package)": {
+    "WindowsXamlApp.Template.WinUI (Package)": {
       "commandName": "MsixPackage"
     },
-    "WindowsXamlAppTemplate.WinUI (Unpackaged)": {
+    "WindowsXamlApp.Template.WinUI (Unpackaged)": {
       "commandName": "Project"
     }
   }
