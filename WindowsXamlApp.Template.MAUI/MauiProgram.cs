@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using WindowsXamlApp.Template.MAUI.Views;
 
 namespace WindowsXamlApp.Template.MAUI
 {
@@ -18,6 +19,8 @@ namespace WindowsXamlApp.Template.MAUI
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddTransient<MainView>();
 
             return builder.Build();
         }

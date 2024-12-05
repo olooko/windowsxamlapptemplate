@@ -1,15 +1,24 @@
-﻿namespace WindowsXamlApp.Template.MAUI
+﻿using WindowsXamlApp.Template.MAUI.Views;
+
+namespace WindowsXamlApp.Template.MAUI
 {
     public partial class App : Application
     {
-        public App()
+        private readonly IServiceProvider _serviceProvider;
+
+        public App(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            var mainPage = new MainPage();
+            mainPage.SetView(_serviceProvider.GetRequiredService<MainView>());
+
+            return new Window(mainPage);
         }
     }
 }
