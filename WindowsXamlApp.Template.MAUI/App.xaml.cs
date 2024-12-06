@@ -1,4 +1,4 @@
-﻿using WindowsXamlApp.Template.MAUI.Views;
+﻿using WindowsXamlApp.Template.MAUI.Pages;
 
 namespace WindowsXamlApp.Template.MAUI
 {
@@ -15,10 +15,8 @@ namespace WindowsXamlApp.Template.MAUI
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var mainPage = new MainPage();
-            mainPage.SetView(_serviceProvider.GetRequiredService<MainView>());
-
-            return new Window(mainPage);
+            var indexPage = _serviceProvider.GetRequiredService<IndexPage>();
+            return new MainWindow(indexPage);
         }
     }
 }

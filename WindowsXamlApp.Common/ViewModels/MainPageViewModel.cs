@@ -1,14 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using WindowsXamlApp.Common.Bases;
 
 namespace WindowsXamlApp.Common.ViewModels
 {
-    public partial class MainViewModel : ViewModelBase
+    public partial class MainPageViewModel : ViewModelBase
     {
         [ObservableProperty]
         private string _welcomeText;
 
-        public MainViewModel()
+        public MainPageViewModel()
         {
             _welcomeText = "Welcome to XAML App.";
         }

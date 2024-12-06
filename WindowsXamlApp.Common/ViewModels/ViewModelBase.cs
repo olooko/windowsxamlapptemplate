@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace WindowsXamlApp.Common.Bases
+namespace WindowsXamlApp.Common.ViewModels
 {
     public class ViewModelBase : ObservableRecipient
     {

@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
-using WindowsXamlApp.Template.WPF.Views;
+using WindowsXamlApp.Template.WPF.Pages;
+using WindowsXamlApp.Template.WPF.Services;
 
 namespace WindowsXamlApp.Template.WPF
 {
@@ -14,11 +16,13 @@ namespace WindowsXamlApp.Template.WPF
         {
             var builder = Host.CreateApplicationBuilder();
 
+            builder.Services.AddSingleton(typeof(IToastService), typeof(ToastService));
+
             builder.Services.AddSingleton(typeof(MainWindow));
 
-            builder.Services.AddSingleton(typeof(MainView));
+            builder.Services.AddSingleton(typeof(IndexPage));
 
-            builder.Services.AddSingleton(typeof(MainViewModel));
+            builder.Services.AddSingleton(typeof(IndexPageViewModel));
 
             _host = builder.Build();
         }
@@ -30,8 +34,7 @@ namespace WindowsXamlApp.Template.WPF
             if (_host != null)
             {
                 var window = _host.Services.GetRequiredService<MainWindow>();
-
-                window.SetView(_host.Services.GetRequiredService<MainView>());
+                window.Content = _host.Services.GetRequiredService<IndexPage>();
                 window.Show();
             }
         }

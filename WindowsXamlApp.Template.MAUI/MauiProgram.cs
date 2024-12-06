@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
-using WindowsXamlApp.Template.MAUI.Views;
+using WindowsXamlApp.Common.Services;
+using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Template.MAUI.Pages;
+using WindowsXamlApp.Template.MAUI.Services;
 
 namespace WindowsXamlApp.Template.MAUI
 {
@@ -19,8 +22,12 @@ namespace WindowsXamlApp.Template.MAUI
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton(typeof(IDialogService), typeof(DialogService));
+            builder.Services.AddSingleton(typeof(IToastService), typeof(ToastService));
 
-            builder.Services.AddTransient<MainView>();
+            builder.Services.AddTransient<IndexPageViewModel>();
+
+            builder.Services.AddTransient<IndexPage>();
 
             return builder.Build();
         }

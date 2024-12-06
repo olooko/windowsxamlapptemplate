@@ -13,8 +13,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Bases\ViewBase.xaml" />
-    <None Remove="Views\MainView.xaml" />
+    <None Remove="Pages\IndexPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,12 +46,7 @@
     <ProjectReference Include="..\WindowsXamlApp.Common\WindowsXamlApp.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Bases\ViewBase.xaml">
+    <Page Update="Pages\IndexPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
