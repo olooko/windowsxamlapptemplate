@@ -19,8 +19,8 @@ namespace WindowsXamlApp.Template.WPF.Services
             _serviceProvider = serviceProvider;
         }
 
-        internal static void AddTransientDialog<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TDialog, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TDialogViewModel>(IServiceCollection services)
-            where TDialog : UserControl
+        public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)
+            where TDialog : UserDialog
             where TDialogViewModel : INotifyPropertyChanged
         {
             _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
@@ -43,7 +43,7 @@ namespace WindowsXamlApp.Template.WPF.Services
             if (userDialog != null)
                 result = await userDialog.WaitAsync();
 
-            window.DialogContent.Visibility = Visibility.Hidden;
+            window.DialogContent.Visibility = Visibility.Collapsed;
             window.DialogContent.Child = null;
 
             return result;

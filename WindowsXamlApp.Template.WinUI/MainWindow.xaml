@@ -7,5 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Windows XAMP Application by WinUI" />
+    Title="Windows XAMP Application by WinUI">
+    <Grid>
+        <Frame x:Name="FrameContent" x:FieldModifier="public" />
+        <Border x:Name="DialogContent" x:FieldModifier="public" Background="#88000000" Visibility="Collapsed" />
+    </Grid>
+</Window>
 

@@ -13,7 +13,7 @@
             <Rectangle Height="200" />-->
             <TextBlock Text="WinUI" />
             <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
-            <Button Content="Show toast message" Command="{Binding ShowToastCommand}" CommandParameter="Hello, World!" />
+            <Button Content="Show Dialog" Command="{Binding ShowDialogCommand}" CommandParameter="Hello, World!" />
         </StackPanel>
     </Grid>
 </Page>

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Template.WinUI.Extensions;
 using WindowsXamlApp.Template.WinUI.Services;
 using WindowsXamlApp.Template.WinUI.Views;
 
@@ -27,6 +28,8 @@ namespace WindowsXamlApp.Template.WinUI
 
             builder.Services.AddSingleton<IndexPageViewModel>();
 
+            builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
+
             _host = builder.Build();
         }
 
@@ -35,7 +38,8 @@ namespace WindowsXamlApp.Template.WinUI
             if (_host != null)
             {
                 var window = _host.Services.GetRequiredService<MainWindow>();
-                window.Content = _host.Services.GetRequiredService<IndexPage>();
+                var page = _host.Services.GetRequiredService<IndexPage>();
+                window.FrameContent.Content = page;
                 window.Activate();
             }
         }

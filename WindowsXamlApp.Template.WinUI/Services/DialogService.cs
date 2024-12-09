@@ -1,13 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WindowsXamlApp.Common.Services;
+using WindowsXamlApp.Template.WinUI.Controls;
 
 namespace WindowsXamlApp.Template.WinUI.Services
 {
@@ -15,36 +13,41 @@ namespace WindowsXamlApp.Template.WinUI.Services
     {
         private readonly IServiceProvider _serviceProvider;
 
+        static readonly Dictionary<Type, Type> _viewModelToViewMappings = [];
+
         public DialogService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
-        public void ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged
+        public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)
+            where TDialog : UserDialog
+            where TDialogViewModel : INotifyPropertyChanged
         {
-            //ContentDialog noWifiDialog = new ContentDialog()
-            //{
-            //    //XamlRoot = this.XamlRoot,
-            //    Title = "No wifi connection",
-            //    Content = "Check connection and try again.",
-            //    CloseButtonText = "Ok"
-            //};
+            _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
 
+            services.AddTransient(typeof(TDialog));
+            services.AddTransient(typeof(TDialogViewModel));
+        }
 
-            //var currentPage = _serviceProvider.GetRequiredService<MainWindow>().Content as Page;
+        public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged
+        {
+            var window = _serviceProvider.GetRequiredService<MainWindow>();
 
-            ////Activator.CreateInstance(typeof(T)) as ViewModelBase 
+            window.DialogContent.Visibility = Visibility.Visible;
 
-            //if (currentPage != null)
-            //{
-            //    var newPage = new Page
-            //    {
-            //        //Background = new BrushConverter().ConvertFromString("#88000000") as SolidColorBrush,
-            //        //Content = ,
-            //    };
+            var userDialog = _serviceProvider.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
+            window.DialogContent.Child = userDialog;
 
-            //    currentPage.PushModalAsync(newPage);
-            //}
+            bool result = false;
+
+            if (userDialog != null)
+                result = await userDialog.WaitAsync();
+
+            window.DialogContent.Visibility = Visibility.Collapsed;
+            window.DialogContent.Child = null;
+
+            return result;
         }
     }
 }

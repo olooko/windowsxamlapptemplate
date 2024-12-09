@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Content Dialog" />
-            <Button Content="Close" />
+            <Button Content="Close" Click="Button_Click" />
         </StackPanel>
     </Grid>
 </controls:UserDialog>

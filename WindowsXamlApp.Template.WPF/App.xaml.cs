@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using System.Windows;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Template.WPF.Extensions;
 using WindowsXamlApp.Template.WPF.Services;
 using WindowsXamlApp.Template.WPF.Views;
 

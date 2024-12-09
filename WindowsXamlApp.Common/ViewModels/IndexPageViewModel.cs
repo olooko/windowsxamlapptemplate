@@ -42,11 +42,9 @@ namespace WindowsXamlApp.Common.ViewModels
         }
 
         [RelayCommand]
-        private void ShowDialog(object message)
+        private async Task ShowDialog(object message)
         {
-            _dialogService.ShowModalAsync<ContentDialogViewModel>();
-            
-            //_toastService.Show(message as string);
+            bool result = await _dialogService.ShowModalAsync<ContentDialogViewModel>();
         }
 
     }
