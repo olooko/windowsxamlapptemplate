@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using WindowsXamlApp.Template.WPF.Pages;
+using WindowsXamlApp.Template.WPF.Views;
 
 namespace WindowsXamlApp.Template.WPF
 {
@@ -9,15 +9,5 @@ namespace WindowsXamlApp.Template.WPF
         {
             InitializeComponent();
         }
-
-        //public void SetPage(ContentPage page)
-        //{
-        //    this.MainFrame.Navigate(page);
-        //}
-
-        //public void ShowToast()
-        //{
-            //this.Toast.Visibility = Visibility.Visible;
-        //}
     }
 }

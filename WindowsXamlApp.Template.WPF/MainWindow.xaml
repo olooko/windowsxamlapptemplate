@@ -3,7 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WindowsXamlApp.Template.WPF"
+        xmlns:views="clr-namespace:WindowsXamlApp.Template.WPF.Views"
         mc:Ignorable="d"
-        Title="Windows XAML Application by WPF" Height="450" Width="800" />
+        Title="Windows XAML Application by WPF" Height="450" Width="800">
+    <Grid>
+        <Frame x:Name="FrameContent" x:FieldModifier="public" />
+        <Border x:Name="DialogContent" x:FieldModifier="public" Background="#88000000" Visibility="Hidden" />
+    </Grid>
+</Window>
 

@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
-using WindowsXamlApp.Template.WinUI.Pages;
+using WindowsXamlApp.Template.WinUI.Services;
+using WindowsXamlApp.Template.WinUI.Views;
 
 namespace WindowsXamlApp.Template.WinUI
 {
@@ -16,11 +18,14 @@ namespace WindowsXamlApp.Template.WinUI
 
             var builder = Host.CreateApplicationBuilder();
 
-            builder.Services.AddSingleton(typeof(MainWindow));
+            builder.Services.AddSingleton<MainWindow>();
 
-            builder.Services.AddSingleton(typeof(IndexPage));
+            builder.Services.AddSingleton<IDialogService, DialogService>();
+            builder.Services.AddSingleton<IPickerService, PickerService>();
 
-            builder.Services.AddSingleton(typeof(IndexPageViewModel));
+            builder.Services.AddSingleton<IndexPage>();
+
+            builder.Services.AddSingleton<IndexPageViewModel>();
 
             _host = builder.Build();
         }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace WindowsXamlApp.Common.Services
 {
     public interface IDialogService
     {
-        void Modal();
+        Task<bool> ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged;
     }
 }

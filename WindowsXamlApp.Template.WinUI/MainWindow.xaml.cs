@@ -8,10 +8,5 @@ namespace WindowsXamlApp.Template.WinUI
         {
             this.InitializeComponent();
         }
-
-        //public void SetView(ViewBase viewBase)
-        //{
-        //    this.View.Content = viewBase;
-        //}
     }
 }

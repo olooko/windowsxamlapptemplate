@@ -1,17 +1,15 @@
-﻿<Page x:Class="WindowsXamlApp.Template.WPF.Pages.IndexPage"
+﻿<Page x:Class="WindowsXamlApp.Template.WPF.Views.IndexPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WindowsXamlApp.Template.WPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="WinUI" />
-            <Button Command="{Binding ShowToastCommand}" CommandParameter="Hello, World!">
-                <TextBlock Text="Show toast message" />
-            </Button>
-        </StackPanel>        
+            <TextBlock Text="WPF" />
+            <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
+            <Button Content="Show Dialog" Command="{Binding ShowDialogCommand}" CommandParameter="Hello, World!" />
+        </StackPanel>
     </Grid>
 </Page>

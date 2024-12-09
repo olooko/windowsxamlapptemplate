@@ -2,7 +2,7 @@
 
 namespace WindowsXamlApp.Template.MAUI.Services
 {
-    public class ToastService : IToastService
+    public sealed class ToastService : IToastService
     {
         public void Show(string message)
         {

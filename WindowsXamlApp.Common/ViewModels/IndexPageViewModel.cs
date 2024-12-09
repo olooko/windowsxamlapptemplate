@@ -7,38 +7,47 @@ namespace WindowsXamlApp.Common.ViewModels
     public partial class IndexPageViewModel : ViewModelBase
     {
         private readonly IDialogService _dialogService;
-        private readonly IToastService _toastService;
+        private readonly IPickerService _pickerService;
 
         private System.Timers.Timer _timer;
 
         [ObservableProperty]
         private string? _currentTimeString;
 
-        public IndexPageViewModel(IDialogService dialogService, IToastService toastService)
+        public IndexPageViewModel(IDialogService dialogService, IPickerService pickerService)
         {
             _dialogService = dialogService;
-            _toastService = toastService;
+            _pickerService = pickerService;
 
             _timer = new System.Timers.Timer();
             _timer.Interval = 500;
             _timer.Elapsed += Timer_Elapsed;
-            _timer.Start();
+            //_timer.Start();
         }
 
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
             _timer.Stop();
 
+            
             this.CurrentTimeString = DateTime.Now.ToString();
 
             _timer.Start();
         }
 
         [RelayCommand]
-        private void ShowToast(object message)
+        private void OpenFile()
         {
-            _dialogService.Modal();
+            _pickerService.OpenFile();
+        }
+
+        [RelayCommand]
+        private void ShowDialog(object message)
+        {
+            _dialogService.ShowModalAsync<ContentDialogViewModel>();
+            
             //_toastService.Show(message as string);
         }
+
     }
 }

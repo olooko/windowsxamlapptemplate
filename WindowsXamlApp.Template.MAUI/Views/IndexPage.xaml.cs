@@ -1,6 +1,6 @@
 using WindowsXamlApp.Common.ViewModels;
 
-namespace WindowsXamlApp.Template.MAUI.Pages;
+namespace WindowsXamlApp.Template.MAUI.Views;
 
 public partial class IndexPage : ContentPage
 {

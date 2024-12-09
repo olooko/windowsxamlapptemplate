@@ -1,7 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using Microsoft.Win32;
+using System.Windows.Controls;
 using WindowsXamlApp.Common.ViewModels;
 
-namespace WindowsXamlApp.Template.WPF.Pages
+namespace WindowsXamlApp.Template.WPF.Views
 {
     public partial class IndexPage : Page
     {

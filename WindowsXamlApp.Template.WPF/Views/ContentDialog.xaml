@@ -1,0 +1,16 @@
+﻿<controls:UserDialog x:Class="WindowsXamlApp.Template.WPF.Views.ContentDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:WindowsXamlApp.Template.WPF.Controls"
+             mc:Ignorable="d" 
+             Height="200" Width="300"
+             Background="White">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Content Dialog" />
+            <Button Content="Close" />
+        </StackPanel>
+    </Grid>
+</controls:UserDialog>

@@ -13,7 +13,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Pages\IndexPage.xaml" />
+    <None Remove="Views\IndexPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>

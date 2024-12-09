@@ -3,8 +3,8 @@ using Microsoft.Extensions.Hosting;
 using System.Windows;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
-using WindowsXamlApp.Template.WPF.Pages;
 using WindowsXamlApp.Template.WPF.Services;
+using WindowsXamlApp.Template.WPF.Views;
 
 namespace WindowsXamlApp.Template.WPF
 {
@@ -16,14 +16,17 @@ namespace WindowsXamlApp.Template.WPF
         {
             var builder = Host.CreateApplicationBuilder();
 
-            builder.Services.AddSingleton(typeof(IToastService), typeof(ToastService));
+            builder.Services.AddSingleton<MainWindow>();
 
-            builder.Services.AddSingleton(typeof(MainWindow));
+            builder.Services.AddSingleton<IDialogService, DialogService>();
+            builder.Services.AddSingleton<IPickerService, PickerService>();
 
-            builder.Services.AddSingleton(typeof(IndexPage));
+            builder.Services.AddTransient<IndexPage>();
 
-            builder.Services.AddSingleton(typeof(IndexPageViewModel));
+            builder.Services.AddTransient<IndexPageViewModel>();
 
+            builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
+            
             _host = builder.Build();
         }
 
@@ -34,7 +37,8 @@ namespace WindowsXamlApp.Template.WPF
             if (_host != null)
             {
                 var window = _host.Services.GetRequiredService<MainWindow>();
-                window.Content = _host.Services.GetRequiredService<IndexPage>();
+                var page = _host.Services.GetRequiredService<IndexPage>();
+                window.FrameContent.Navigate(page);
                 window.Show();
             }
         }

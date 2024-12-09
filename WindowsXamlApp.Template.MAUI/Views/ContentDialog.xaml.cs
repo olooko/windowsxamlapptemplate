@@ -1,4 +1,6 @@
-namespace WindowsXamlApp.Template.MAUI.Dialogs;
+using WindowsXamlApp.Common.ViewModels;
+
+namespace WindowsXamlApp.Template.MAUI.Views;
 
 public partial class ContentDialog : ContentView
 {
