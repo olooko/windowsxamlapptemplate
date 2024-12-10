@@ -5,9 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:WindowsXamlApp.Template.WPF.Controls"
              mc:Ignorable="d" 
-             Height="200" Width="300"
-             Background="White">
-    <Grid>
+             Height="200" Width="300">
+    <Grid Background="White">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Content Dialog" />
             <Button Content="Close" Click="Button_Click" />

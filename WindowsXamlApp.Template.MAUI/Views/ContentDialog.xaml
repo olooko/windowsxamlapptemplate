@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<controls:UserDialog xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WindowsXamlApp.Template.MAUI.Views.ContentDialog">
-    <Grid>
-        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White">
-            <Label Text="Welcome to .NET MAUI!" />
-            <Entry />
+             xmlns:controls="clr-namespace:WindowsXamlApp.Template.MAUI.Controls"
+             x:Class="WindowsXamlApp.Template.MAUI.Views.ContentDialog"
+             WidthRequest="300" HeightRequest="200">
+    <Grid BackgroundColor="White">
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Content Dialog" />
             <Button Text="Close" Clicked="Button_Clicked" />
         </VerticalStackLayout>
     </Grid>
-</ContentView>
+</controls:UserDialog>

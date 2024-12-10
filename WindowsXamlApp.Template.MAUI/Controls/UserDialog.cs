@@ -1,10 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace WindowsXamlApp.Template.WinUI.Controls
+﻿namespace WindowsXamlApp.Template.MAUI.Controls
 {
-    public class UserDialog : UserControl
+    public class UserDialog : ContentView
     {
         private TaskCompletionSource<bool> _taskCompletionSource;
         private CancellationToken _cancellationToken;

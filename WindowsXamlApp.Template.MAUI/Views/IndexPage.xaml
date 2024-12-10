@@ -8,7 +8,7 @@
             <BoxView HeightRequest="200" />-->
             <Label Text="MAUI" />
             <Button Text="Open File..." Command="{Binding OpenFileCommand}" />
-            <Button Text="Show toast message" Command="{Binding ShowToastCommand}" CommandParameter="Hello, World!" />
+            <Button Text="Show Dialog" Command="{Binding ShowDialogCommand}" CommandParameter="Hello, World!" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

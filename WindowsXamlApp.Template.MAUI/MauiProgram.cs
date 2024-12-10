@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Template.MAUI.Extensions;
 using WindowsXamlApp.Template.MAUI.Services;
 using WindowsXamlApp.Template.MAUI.Views;
 
@@ -28,6 +29,8 @@ namespace WindowsXamlApp.Template.MAUI
             builder.Services.AddTransient<IndexPage>();
 
             builder.Services.AddTransient<IndexPageViewModel>();
+
+            builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
 
             return builder.Build();
         }
