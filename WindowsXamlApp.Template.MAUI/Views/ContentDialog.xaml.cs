@@ -11,7 +11,6 @@ public partial class ContentDialog : UserDialog
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-		var parentPage = this.Parent as ContentPage;
-		parentPage!.Navigation.PopModalAsync();
+		this.Close(true);
     }
 }

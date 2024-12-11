@@ -27,13 +27,15 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
         public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged
         {
+            bool result = false;
+
             var window = App.Current!.Windows[0];
 
             var currentPage = window.Page as ContentPage;
 
             var userDialog = _serviceProvider.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
 
-            if (currentPage != null)
+            if (currentPage != null && userDialog != null)
             {
                 var newPage = new ContentPage
                 {
@@ -41,17 +43,9 @@ namespace WindowsXamlApp.Template.MAUI.Services
                     Content = userDialog,
                 };
 
-                await currentPage.Navigation.PushModalAsync(newPage);
+                await currentPage.Navigation.PushModalAsync(newPage, false);
+                result = await userDialog.WaitAsync();
             }
-
-
-            bool result = false;
-
-            //if (userDialog != null)
-            //    result = await userDialog.WaitAsync();
-
-            //window.DialogContent.Visibility = Visibility.Collapsed;
-            //window.DialogContent.Child = null;
 
             return result;
         }

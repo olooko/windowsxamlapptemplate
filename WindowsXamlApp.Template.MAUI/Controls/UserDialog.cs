@@ -18,6 +18,9 @@
 
         public void Close(bool result)
         {
+            var parentPage = this.Parent as ContentPage;
+            parentPage!.Navigation.PopModalAsync(false);
+
             _taskCompletionSource.SetResult(result);
         }
     }
