@@ -1,9 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using WindowsXamlApp.Common.Services;
-using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Common.ViewModels.Dialogs;
+using WindowsXamlApp.Common.ViewModels.Pages;
 using WindowsXamlApp.Template.MAUI.Extensions;
 using WindowsXamlApp.Template.MAUI.Services;
-using WindowsXamlApp.Template.MAUI.Views;
+using WindowsXamlApp.Template.MAUI.Views.Dialogs;
+using WindowsXamlApp.Template.MAUI.Views.Pages;
 
 namespace WindowsXamlApp.Template.MAUI
 {
@@ -14,6 +17,7 @@ namespace WindowsXamlApp.Template.MAUI
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

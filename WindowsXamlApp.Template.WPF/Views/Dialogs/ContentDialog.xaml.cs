@@ -1,6 +1,6 @@
 ﻿using WindowsXamlApp.Template.WPF.Controls;
 
-namespace WindowsXamlApp.Template.WPF.Views
+namespace WindowsXamlApp.Template.WPF.Views.Dialogs
 {
     public partial class ContentDialog : UserDialog
     {

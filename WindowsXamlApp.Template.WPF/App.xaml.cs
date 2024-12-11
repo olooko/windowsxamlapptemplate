@@ -2,10 +2,12 @@
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 using WindowsXamlApp.Common.Services;
-using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Common.ViewModels.Dialogs;
+using WindowsXamlApp.Common.ViewModels.Pages;
 using WindowsXamlApp.Template.WPF.Extensions;
 using WindowsXamlApp.Template.WPF.Services;
-using WindowsXamlApp.Template.WPF.Views;
+using WindowsXamlApp.Template.WPF.Views.Dialogs;
+using WindowsXamlApp.Template.WPF.Views.Pages;
 
 namespace WindowsXamlApp.Template.WPF
 {

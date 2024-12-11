@@ -1,4 +1,4 @@
-﻿using WindowsXamlApp.Template.MAUI.Views;
+﻿using WindowsXamlApp.Template.MAUI.Views.Pages;
 
 namespace WindowsXamlApp.Template.MAUI
 {

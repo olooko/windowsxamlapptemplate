@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <controls:UserDialog xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:WindowsXamlApp.Template.MAUI.Controls"
-             x:Class="WindowsXamlApp.Template.MAUI.Views.ContentDialog"
-             WidthRequest="300" HeightRequest="200">
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:controls="clr-namespace:WindowsXamlApp.Template.MAUI.Controls"
+                     x:Class="WindowsXamlApp.Template.MAUI.Views.Dialogs.ContentDialog"
+                     WidthRequest="300" HeightRequest="200">
     <Grid BackgroundColor="White">
         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Label Text="Content Dialog" />

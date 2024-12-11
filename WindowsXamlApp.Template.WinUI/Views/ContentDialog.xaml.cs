@@ -1,4 +1,4 @@
-using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Common.DialogModels;
 using WindowsXamlApp.Template.WinUI.Controls;
 
 namespace WindowsXamlApp.Template.WinUI.Views

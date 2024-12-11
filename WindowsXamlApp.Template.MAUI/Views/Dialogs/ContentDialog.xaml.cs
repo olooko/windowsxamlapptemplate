@@ -1,6 +1,6 @@
 using WindowsXamlApp.Template.MAUI.Controls;
 
-namespace WindowsXamlApp.Template.MAUI.Views;
+namespace WindowsXamlApp.Template.MAUI.Views.Dialogs;
 
 public partial class ContentDialog : UserDialog
 {

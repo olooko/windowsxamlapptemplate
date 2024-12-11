@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using WindowsXamlApp.Common.DialogModels;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels;
 using WindowsXamlApp.Template.WinUI.Extensions;
