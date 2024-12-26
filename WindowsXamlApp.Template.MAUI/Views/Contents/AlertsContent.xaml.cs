@@ -1,8 +1,8 @@
 namespace WindowsXamlApp.Template.MAUI.Views.Contents;
 
-public partial class ControlContent : ContentView
+public partial class AlertsContent : ContentView
 {
-	public ControlContent()
+	public AlertsContent()
 	{
 		InitializeComponent();
 	}

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
-using WindowsXamlApp.Common.DialogModels;
+using WindowsXamlApp.Common.ViewModels.Dialogs;
 using WindowsXamlApp.Common.Services;
-using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Common.ViewModels.Pages;
 using WindowsXamlApp.Template.WinUI.Extensions;
 using WindowsXamlApp.Template.WinUI.Services;
 using WindowsXamlApp.Template.WinUI.Views;

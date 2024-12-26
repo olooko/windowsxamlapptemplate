@@ -1,5 +1,5 @@
 using Microsoft.UI.Xaml.Controls;
-using WindowsXamlApp.Common.ViewModels;
+using WindowsXamlApp.Common.ViewModels.Pages;
 
 namespace WindowsXamlApp.Template.WinUI.Views
 {

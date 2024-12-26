@@ -73,13 +73,22 @@
 	  <Compile Update="Controls\TemplatedButton.xaml.cs">
 	    <DependentUpon>TemplatedButton.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Contents\AlertsContent.xaml.cs">
+	    <DependentUpon>AlertsContent.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Contents\ControlsContent.xaml.cs">
+	    <DependentUpon>ControlsContent.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Controls\TemplatedButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Contents\ControlContent.xaml">
+	  <MauiXaml Update="Views\Contents\AlertsContent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Contents\ControlsContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Dialogs\ContentDialog.xaml">

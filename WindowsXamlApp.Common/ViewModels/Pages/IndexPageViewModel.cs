@@ -33,8 +33,9 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
 
             _menuList = new ObservableCollection<MenuListItemModel>();
             _menuList.Add(new MenuListItemModel { Title = "Controls", Code = 1 });
+            _menuList.Add(new MenuListItemModel { Title = "Alerts", Code = 2 });
 
-            
+
             //_timer = new System.Timers.Timer();
             //_timer.Interval = 500;
             //_timer.Elapsed += Timer_Elapsed;

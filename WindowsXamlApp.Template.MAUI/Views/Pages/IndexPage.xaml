@@ -39,10 +39,17 @@
                             <DataTrigger TargetType="Border" Binding="{Binding SelectedMenuListItem.Code}" Value="1">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <contents:ControlContent />
+                                        <contents:ControlsContent />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger TargetType="Border" Binding="{Binding SelectedMenuListItem.Code}" Value="2">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <contents:AlertsContent />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>                            
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
