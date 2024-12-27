@@ -1,21 +1,18 @@
-﻿using WindowsXamlApp.Template.MAUI.Views.Pages;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using WindowsXamlApp.Template.MAUI.Views.Pages;
 
 namespace WindowsXamlApp.Template.MAUI
 {
     public partial class App : Application
     {
-        private readonly IServiceProvider _serviceProvider;
-
-        public App(IServiceProvider serviceProvider)
+        public App()
         {
-            _serviceProvider = serviceProvider;
-
             InitializeComponent();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var indexPage = _serviceProvider.GetRequiredService<IndexPage>();
+            var indexPage = Ioc.Default.GetRequiredService<IndexPage>();
             return new MainWindow(indexPage);
         }
     }

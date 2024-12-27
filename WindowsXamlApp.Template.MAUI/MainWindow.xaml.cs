@@ -11,6 +11,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+		
 		this.Page = page;
     }
 }

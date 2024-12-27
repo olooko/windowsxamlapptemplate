@@ -5,12 +5,53 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <WrapPanel>
+        <StackPanel Margin="8">
+            <CheckBox IsChecked="{Binding CheckBoxList[0].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[0].Code}">
+                <TextBlock Text="{Binding CheckBoxList[0].Text}" />
+            </CheckBox>
+            <CheckBox IsChecked="{Binding CheckBoxList[1].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[1].Code}">
+                <TextBlock Text="{Binding CheckBoxList[1].Text}" />
+            </CheckBox>
+            <CheckBox IsChecked="{Binding CheckBoxList[2].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[2].Code}">
+                <TextBlock Text="{Binding CheckBoxList[2].Text}" />
+            </CheckBox>
+            <CheckBox IsChecked="{Binding CheckBoxList[3].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[3].Code}">
+                <TextBlock Text="{Binding CheckBoxList[3].Text}" />
+            </CheckBox>
+            <TextBlock Text="{Binding CheckBoxStateText}" />
+        </StackPanel>
+        <StackPanel Margin="8">
+            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[0].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[0].Code}">
+                <TextBlock Text="{Binding RadioButtonList[0].Text}" />
+            </RadioButton>
+            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[1].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[1].Code}">
+                <TextBlock Text="{Binding RadioButtonList[1].Text}" />
+            </RadioButton>
+            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[2].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[2].Code}">
+                <TextBlock Text="{Binding RadioButtonList[2].Text}" />
+            </RadioButton>
+            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[3].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[3].Code}">
+                <TextBlock Text="{Binding RadioButtonList[3].Text}" />
+            </RadioButton>
+            <TextBlock Text="{Binding RadioButtonStateText}" />
+        </StackPanel>
+        <StackPanel Margin="8">
+            <ComboBox ItemsSource="{Binding ComboBoxList}" SelectedItem="{Binding ComboBoxSelectedItem}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Text}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="{Binding ComboBoxSelectionText}" />
+        </StackPanel>
+    </WrapPanel>
+    <!--<Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <!--<Ellipse Fill="{StaticResource ColorStatusDangerForeground1Brush}" />-->
             <TextBlock Text="WPF" />
             <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
             <Button Content="Show Dialog" Command="{Binding ShowDialogCommand}" CommandParameter="Hello, World!" />
         </StackPanel>
-    </Grid>
+    </Grid>-->
 </Page>

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:WindowsXamlApp.Template.MAUI.Controls"
-             x:Class="WindowsXamlApp.Template.MAUI.Views.Contents.AlertsContent">
+             xmlns:viewModels="clr-namespace:WindowsXamlApp.Common.ViewModels.Contents;assembly=WindowsXamlApp.Common"
+             x:Class="WindowsXamlApp.Template.MAUI.Views.Contents.AlertsContent"
+             x:DataType="viewModels:AlertsContentViewModel">
+    <ContentView.BindingContext>
+        <viewModels:AlertsContentViewModel />
+    </ContentView.BindingContext>
     <VerticalStackLayout>
         <Button Text="Toast" Command="{Binding ShowToastCommand}" />
     </VerticalStackLayout>

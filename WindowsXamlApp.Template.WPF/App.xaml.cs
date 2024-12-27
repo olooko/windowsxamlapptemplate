@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 using WindowsXamlApp.Common.Services;
@@ -13,7 +14,7 @@ namespace WindowsXamlApp.Template.WPF
 {
     public partial class App : Application
     {
-        protected readonly IHost? _host;
+        //protected readonly IHost? _host;
 
         public App()
         {
@@ -30,20 +31,19 @@ namespace WindowsXamlApp.Template.WPF
 
             builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
             
-            _host = builder.Build();
+            IHost host = builder.Build();
+
+            Ioc.Default.ConfigureServices(host.Services);
         }
 
         protected override void OnStartup(StartupEventArgs args)
         {
             base.OnStartup(args);
 
-            if (_host != null)
-            {
-                var window = _host.Services.GetRequiredService<MainWindow>();
-                var page = _host.Services.GetRequiredService<IndexPage>();
-                window.FrameContent.Navigate(page);
-                window.Show();
-            }
+            var window = Ioc.Default.GetRequiredService<MainWindow>();
+            var page = Ioc.Default.GetRequiredService<IndexPage>();
+            window.FrameContent.Navigate(page);
+            window.Show();
         }
     }
 }
