@@ -34,6 +34,15 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         [ObservableProperty]
         private string? _comboBoxSelectionText;
 
+        [ObservableProperty]
+        private List<ListBoxItemModel> _listBoxList;
+
+        [ObservableProperty]
+        private ListBoxItemModel _listBoxSelectedItem;
+
+        [ObservableProperty]
+        private string? _listBoxSelectionText;
+
         //[ObservableProperty]
         //private ObservableCollection<MenuListItemModel> _menuList;
 
@@ -70,6 +79,12 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
             this.ComboBoxList.Add(new ComboBoxItemModel { Code = "J", Text = "콤보 J" });
             this.ComboBoxList.Add(new ComboBoxItemModel { Code = "K", Text = "콤보 K" });
             this.ComboBoxList.Add(new ComboBoxItemModel { Code = "L", Text = "콤보 L" });
+
+            this.ListBoxList = new List<ListBoxItemModel>();
+            this.ListBoxList.Add(new ListBoxItemModel { Code = "M", Text = "리스트 M" });
+            this.ListBoxList.Add(new ListBoxItemModel { Code = "N", Text = "리스트 N" });
+            this.ListBoxList.Add(new ListBoxItemModel { Code = "O", Text = "리스트 O" });
+            this.ListBoxList.Add(new ListBoxItemModel { Code = "P", Text = "리스트 P" });
 
             //_menuList = new ObservableCollection<MenuListItemModel>();
             //_menuList.Add(new MenuListItemModel { Title = "Controls", Code = 1 });
@@ -111,6 +126,14 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
             }
         }
 
+        partial void OnListBoxSelectedItemChanged(ListBoxItemModel value)
+        {
+            if (value != null)
+            {
+                this.ListBoxSelectionText = string.Format("{0} is selected.", value.Code);
+            }
+        }
+
         //[RelayCommand]
         //private void MenuListItemSelected()
         //{
@@ -127,11 +150,24 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         //    _timer.Start();
         //}
 
-        //[RelayCommand]
-        //private void OpenFile()
-        //{
-        //    _pickerService.OpenFile();
-        //}
+        [RelayCommand]
+        private void OpenFile()
+        {
+            _pickerService.OpenFile();
+        }
+
+        [RelayCommand]
+        private void SaveFile()
+        {
+            //_pickerService.OpenFile();
+
+
+            // 일정 보기: 항상 표시되는 달력에서 단일 날짜 또는 날짜 범위를 선택하는 데 사용합니다.
+            // 달력 날짜 선택기: 상황에 맞는 달력에서 단일 날짜를 선택하는 데 사용합니다.
+            // 날짜 선택기: 컨텍스트 정보가 중요하지 않은 경우, 잘 알려진 단일 날짜를 선택하는 데 사용합니다.
+            // 시간 선택기: 단일 시간 값을 선택하는 데 사용합니다.
+            // 색상 선택기
+        }
 
         //[RelayCommand]
         //private async Task ShowDialog(object message)

@@ -46,6 +46,20 @@
             </ComboBox>
             <TextBlock Text="{Binding ComboBoxSelectionText}" />
         </StackPanel>
+        <StackPanel Margin="8">
+            <ListBox ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Text}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Text="{Binding ListBoxSelectionText}" />
+        </StackPanel>
+        <StackPanel Margin="8">
+            <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
+            <Button Content="Save File..." />
+        </StackPanel>
     </WrapPanel>
     <!--<Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
