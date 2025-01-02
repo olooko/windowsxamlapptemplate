@@ -8,6 +8,7 @@ namespace WindowsXamlApp.Common.Services
 {
     public interface IPickerService
     {
-        void OpenFile();
+        string OpenFile();
+        string SaveFile();
     }
 }

@@ -58,7 +58,8 @@
         </StackPanel>
         <StackPanel Margin="8">
             <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
-            <Button Content="Save File..." />
+            <Button Content="Save File..." Command="{Binding SaveFileCommand}" />
+            <TextBlock Text="{Binding PickerSelectionText}" />
         </StackPanel>
     </WrapPanel>
     <!--<Grid>
