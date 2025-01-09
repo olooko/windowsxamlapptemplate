@@ -1,7 +1,7 @@
 using WindowsXamlApp.Common.ViewModels.Dialogs;
 using WindowsXamlApp.Template.WinUI.Controls;
 
-namespace WindowsXamlApp.Template.WinUI.Views
+namespace WindowsXamlApp.Template.WinUI.Views.Dialogs
 {
     public sealed partial class ContentDialog : UserDialog
     {

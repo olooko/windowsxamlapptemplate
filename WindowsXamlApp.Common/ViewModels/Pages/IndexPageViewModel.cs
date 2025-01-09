@@ -10,8 +10,8 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
 {
     public partial class IndexPageViewModel : ViewModelBase
     {
-        private readonly IDialogService _dialogService;
         private readonly IPickerService _pickerService;
+        private readonly IDialogService _dialogService;
 
         [ObservableProperty]
         private List<CheckBoxItemModel> _checkBoxList;
@@ -42,6 +42,9 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
 
         [ObservableProperty]
         private string? _listBoxSelectionText;
+
+        [ObservableProperty]
+        private string? _pickerSelectionText;
 
         //[ObservableProperty]
         //private ObservableCollection<MenuListItemModel> _menuList;
@@ -153,14 +156,13 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         [RelayCommand]
         private void OpenFile()
         {
-            _pickerService.OpenFile();
+            this.PickerSelectionText = _pickerService.OpenFile();
         }
 
         [RelayCommand]
         private void SaveFile()
         {
-            //_pickerService.OpenFile();
-
+            this.PickerSelectionText = _pickerService.SaveFile();
 
             // 일정 보기: 항상 표시되는 달력에서 단일 날짜 또는 날짜 범위를 선택하는 데 사용합니다.
             // 달력 날짜 선택기: 상황에 맞는 달력에서 단일 날짜를 선택하는 데 사용합니다.
@@ -169,11 +171,11 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
             // 색상 선택기
         }
 
-        //[RelayCommand]
-        //private async Task ShowDialog(object message)
-        //{
-        //    bool result = await _dialogService.ShowModalAsync<ContentDialogViewModel>();
-        //}
+        [RelayCommand]
+        private async Task ShowContentDialog(object message)
+        {
+            bool result = await _dialogService.ShowModalAsync<ContentDialogViewModel>();
+        }
 
     }
 }

@@ -7,27 +7,27 @@ namespace WindowsXamlApp.Template.WinUI.Services
 {
     public sealed class PickerService : IPickerService
     {
-        private readonly IServiceProvider _serviceProvider;
+        public string OpenFile()
+        {
+            //var openPicker = new FileOpenPicker();
 
-        public PickerService(IServiceProvider serviceProvider) 
-        { 
-            _serviceProvider = serviceProvider;
+            //var window = _serviceProvider.GetRequiredService<MainWindow>();
+
+            //var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+            //WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
+
+            //openPicker.ViewMode = PickerViewMode.Thumbnail;
+            //openPicker.FileTypeFilter.Add("*");
+
+            //var file = await openPicker.PickSingleFileAsync();
+
+            return string.Empty;
         }
 
-        public async void OpenFile()
+        public string SaveFile()
         {
-            var openPicker = new FileOpenPicker();
-
-            var window = _serviceProvider.GetRequiredService<MainWindow>();
-
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-
-            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
-
-            openPicker.ViewMode = PickerViewMode.Thumbnail;
-            openPicker.FileTypeFilter.Add("*");
-
-            var file = await openPicker.PickSingleFileAsync();
+            return string.Empty;
         }
     }
 }

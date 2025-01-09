@@ -6,14 +6,14 @@ using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels.Pages;
 using WindowsXamlApp.Template.WinUI.Extensions;
 using WindowsXamlApp.Template.WinUI.Services;
-using WindowsXamlApp.Template.WinUI.Views;
+using WindowsXamlApp.Template.WinUI.Views.Dialogs;
+using WindowsXamlApp.Template.WinUI.Views.Pages;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace WindowsXamlApp.Template.WinUI
 {
     public partial class App : Application
     {
-        protected readonly IHost? _host;
-
         public App()
         {
             this.InitializeComponent();
@@ -31,18 +31,17 @@ namespace WindowsXamlApp.Template.WinUI
 
             builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
 
-            _host = builder.Build();
+            IHost host = builder.Build();
+
+            Ioc.Default.ConfigureServices(host.Services);
         }
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            if (_host != null)
-            {
-                var window = _host.Services.GetRequiredService<MainWindow>();
-                var page = _host.Services.GetRequiredService<IndexPage>();
-                window.FrameContent.Content = page;
-                window.Activate();
-            }
+            var window = Ioc.Default.GetRequiredService<MainWindow>();
+            var page = Ioc.Default.GetRequiredService<IndexPage>();
+            window.FrameContent.Content = page;
+            window.Activate();
         }
     }
 }

@@ -8,7 +8,6 @@ namespace WindowsXamlApp.Template.WPF.Services
         public string OpenFile()
         {
             var dialog = new OpenFileDialog();
-            //dialog.FileName = "Document";
             dialog.DefaultExt = ".txt";
             dialog.Filter = "Text documents (.txt)|*.txt";
 
@@ -23,7 +22,7 @@ namespace WindowsXamlApp.Template.WPF.Services
         public string SaveFile()
         {
             var dialog = new SaveFileDialog();
-            //dialog.FileName = "Document";
+            dialog.FileName = "FileName";
             dialog.DefaultExt = ".txt";
             dialog.Filter = "Text documents (.txt)|*.txt";
 
@@ -33,6 +32,12 @@ namespace WindowsXamlApp.Template.WPF.Services
                 return dialog.FileName;
             
             return string.Empty;
+        }
+
+        public void SelectColor()
+        {
+            //var dialog = new Dial ColorDialog();
+            //dialog.ShowDialog();
         }
     }
 }
