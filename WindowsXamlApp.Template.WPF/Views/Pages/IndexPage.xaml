@@ -56,7 +56,7 @@
             </ListBox>
             <TextBlock Text="{Binding ListBoxSelectionText}" />
         </StackPanel>
-        <StackPanel Margin="8" MaxWidth="80">
+        <StackPanel Margin="8" MaxWidth="120">
             <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
             <Button Content="Save File..." Command="{Binding SaveFileCommand}" />
             <TextBlock Text="{Binding PickerSelectionText}" TextWrapping="Wrap" />

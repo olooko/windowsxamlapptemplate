@@ -60,9 +60,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -70,27 +70,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Controls\TemplatedButton.xaml.cs">
-	    <DependentUpon>TemplatedButton.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Contents\AlertsContent.xaml.cs">
-	    <DependentUpon>AlertsContent.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Contents\ControlsContent.xaml.cs">
-	    <DependentUpon>ControlsContent.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Controls\TemplatedButton.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Contents\AlertsContent.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Contents\ControlsContent.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\Dialogs\ContentDialog.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

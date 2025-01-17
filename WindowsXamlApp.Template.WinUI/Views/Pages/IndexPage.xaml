@@ -7,39 +7,60 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <StackPanel Orientation="Horizontal">
+    <VariableSizedWrapGrid Orientation="Horizontal">
         <StackPanel Margin="8">
-            <CheckBox IsChecked="{Binding CheckBoxList[0].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[0].Code}">
+            <CheckBox IsChecked="{Binding CheckBoxList[0].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Command="{Binding UpdateCheckBoxStateCommand}" 
+                        CommandParameter="{Binding CheckBoxList[0].Code}">
                 <TextBlock Text="{Binding CheckBoxList[0].Text}" />
             </CheckBox>
-            <CheckBox IsChecked="{Binding CheckBoxList[1].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[1].Code}">
+            <CheckBox IsChecked="{Binding CheckBoxList[1].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Command="{Binding UpdateCheckBoxStateCommand}" 
+                        CommandParameter="{Binding CheckBoxList[1].Code}">
                 <TextBlock Text="{Binding CheckBoxList[1].Text}" />
             </CheckBox>
-            <CheckBox IsChecked="{Binding CheckBoxList[2].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[2].Code}">
+            <CheckBox IsChecked="{Binding CheckBoxList[2].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Command="{Binding UpdateCheckBoxStateCommand}" 
+                        CommandParameter="{Binding CheckBoxList[2].Code}">
                 <TextBlock Text="{Binding CheckBoxList[2].Text}" />
             </CheckBox>
-            <CheckBox IsChecked="{Binding CheckBoxList[3].IsChecked}" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[3].Code}">
+            <CheckBox IsChecked="{Binding CheckBoxList[3].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Command="{Binding UpdateCheckBoxStateCommand}" 
+                        CommandParameter="{Binding CheckBoxList[3].Code}">
                 <TextBlock Text="{Binding CheckBoxList[3].Text}" />
             </CheckBox>
             <TextBlock Text="{Binding CheckBoxStateText}" />
         </StackPanel>
         <StackPanel Margin="8">
-            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[0].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[0].Code}">
+            <RadioButton GroupName="WINUI" 
+                         IsChecked="{Binding RadioButtonList[0].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         Command="{Binding UpdateRadioButtonStateCommand}" 
+                         CommandParameter="{Binding RadioButtonList[0].Code}">
                 <TextBlock Text="{Binding RadioButtonList[0].Text}" />
             </RadioButton>
-            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[1].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[1].Code}">
+            <RadioButton GroupName="WINUI" 
+                         IsChecked="{Binding RadioButtonList[1].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         Command="{Binding UpdateRadioButtonStateCommand}" 
+                         CommandParameter="{Binding RadioButtonList[1].Code}">
                 <TextBlock Text="{Binding RadioButtonList[1].Text}" />
             </RadioButton>
-            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[2].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[2].Code}">
+            <RadioButton GroupName="WINUI" 
+                         IsChecked="{Binding RadioButtonList[2].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         Command="{Binding UpdateRadioButtonStateCommand}" 
+                         CommandParameter="{Binding RadioButtonList[2].Code}">
                 <TextBlock Text="{Binding RadioButtonList[2].Text}" />
             </RadioButton>
-            <RadioButton GroupName="WPF" IsChecked="{Binding RadioButtonList[3].IsChecked}" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[3].Code}">
+            <RadioButton GroupName="WINUI" 
+                         IsChecked="{Binding RadioButtonList[3].IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         Command="{Binding UpdateRadioButtonStateCommand}" 
+                         CommandParameter="{Binding RadioButtonList[3].Code}">
                 <TextBlock Text="{Binding RadioButtonList[3].Text}" />
             </RadioButton>
             <TextBlock Text="{Binding RadioButtonStateText}" />
         </StackPanel>
         <StackPanel Margin="8">
-            <ComboBox ItemsSource="{Binding ComboBoxList}" SelectedItem="{Binding ComboBoxSelectedItem}">
+            <ComboBox ItemsSource="{Binding ComboBoxList}" 
+                      SelectedItem="{Binding ComboBoxSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Text}" />
@@ -49,7 +70,8 @@
             <TextBlock Text="{Binding ComboBoxSelectionText}" />
         </StackPanel>
         <StackPanel Margin="8">
-            <ListBox ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}">
+            <ListBox ItemsSource="{Binding ListBoxList}" 
+                     SelectedItem="{Binding ListBoxSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Text}" />
@@ -58,7 +80,7 @@
             </ListBox>
             <TextBlock Text="{Binding ListBoxSelectionText}" />
         </StackPanel>
-        <StackPanel Margin="8" MaxWidth="80">
+        <StackPanel Margin="8" MaxWidth="120">
             <Button Content="Open File..." Command="{Binding OpenFileCommand}" />
             <Button Content="Save File..." Command="{Binding SaveFileCommand}" />
             <TextBlock Text="{Binding PickerSelectionText}" TextWrapping="Wrap" />
@@ -66,5 +88,5 @@
         <StackPanel Margin="8">
             <Button Content="Content Dialog..." Command="{Binding ShowContentDialogCommand}" />
         </StackPanel>
-    </StackPanel>
+    </VariableSizedWrapGrid>
 </Page>

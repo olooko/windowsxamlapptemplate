@@ -2,65 +2,102 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:contents="clr-namespace:WindowsXamlApp.Template.MAUI.Views.Contents"
              xmlns:models="clr-namespace:WindowsXamlApp.Common.Models;assembly=WindowsXamlApp.Common"
              xmlns:viewModels="clr-namespace:WindowsXamlApp.Common.ViewModels.Pages;assembly=WindowsXamlApp.Common"
              x:Class="WindowsXamlApp.Template.MAUI.Views.Pages.IndexPage"
              x:DataType="viewModels:IndexPageViewModel">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding MenuList}" SelectedItem="{Binding SelectedMenuListItem}" WidthRequest="150">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:MenuListItemModel">
-                    <ViewCell>
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Title}" />
-                        </VerticalStackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior EventName="ItemSelected" Command="{Binding MenuListItemSelectedCommand}" />
-            </ListView.Behaviors>
-        </ListView>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Label Text="{Binding SelectedText}" />
-            <Border Grid.Row="1">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Style.Triggers>
-                            <DataTrigger TargetType="Border" Binding="{Binding SelectedMenuListItem.Code}" Value="1">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <contents:ControlsContent />
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger TargetType="Border" Binding="{Binding SelectedMenuListItem.Code}" Value="2">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <contents:AlertsContent />
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>                            
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-            </Border>
-        </Grid>
-
-
-        <!--<VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300">
-            <Label Text="MAUI" />
+    <FlexLayout>
+        <VerticalStackLayout Margin="8">
+            <HorizontalStackLayout>
+                <CheckBox IsChecked="{Binding CheckBoxList[0].IsChecked}">
+                    <CheckBox.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[0].Code}" />
+                    </CheckBox.Behaviors>
+                </CheckBox>
+                <Label Text="{Binding CheckBoxList[0].Text}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox IsChecked="{Binding CheckBoxList[1].IsChecked}">
+                    <CheckBox.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[1].Code}" />
+                    </CheckBox.Behaviors>
+                </CheckBox>
+                <Label Text="{Binding CheckBoxList[1].Text}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox IsChecked="{Binding CheckBoxList[2].IsChecked}">
+                    <CheckBox.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[2].Code}" />
+                    </CheckBox.Behaviors>
+                </CheckBox>
+                <Label Text="{Binding CheckBoxList[2].Text}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox IsChecked="{Binding CheckBoxList[3].IsChecked}">
+                    <CheckBox.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateCheckBoxStateCommand}" CommandParameter="{Binding CheckBoxList[3].Code}" />
+                    </CheckBox.Behaviors>
+                </CheckBox>
+                <Label Text="{Binding CheckBoxList[3].Text}" />
+            </HorizontalStackLayout>            
+            <Label Text="{Binding CheckBoxStateText}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="8">
+            <HorizontalStackLayout>
+                <RadioButton GroupName="MAUI" IsChecked="{Binding RadioButtonList[0].IsChecked}">
+                    <RadioButton.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[0].Code}" />
+                    </RadioButton.Behaviors>
+                </RadioButton>
+                <Label Text="{Binding RadioButtonList[0].Text}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <RadioButton GroupName="MAUI" IsChecked="{Binding RadioButtonList[1].IsChecked}">
+                    <RadioButton.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[1].Code}" />
+                    </RadioButton.Behaviors>
+                </RadioButton>
+                <Label Text="{Binding RadioButtonList[1].Text}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <RadioButton GroupName="MAUI" IsChecked="{Binding RadioButtonList[2].IsChecked}">
+                    <RadioButton.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[2].Code}" />
+                    </RadioButton.Behaviors>
+                </RadioButton>
+                <Label Text="{Binding RadioButtonList[2].Text}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <RadioButton GroupName="MAUI" IsChecked="{Binding RadioButtonList[3].IsChecked}">
+                    <RadioButton.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UpdateRadioButtonStateCommand}" CommandParameter="{Binding RadioButtonList[3].Code}" />
+                    </RadioButton.Behaviors>
+                </RadioButton>
+                <Label Text="{Binding RadioButtonList[3].Text}" />
+            </HorizontalStackLayout>
+            <Label Text="{Binding RadioButtonStateText}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="8">
+            <Picker ItemsSource="{Binding ComboBoxList}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding ComboBoxSelectedItem}" />
+            <Label Text="{Binding ComboBoxSelectionText}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="8">
+            <CollectionView ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Text}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text="{Binding ListBoxSelectionText}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="8" MaximumWidthRequest="100">
             <Button Text="Open File..." Command="{Binding OpenFileCommand}" />
-            <Button Text="Show Dialog" Command="{Binding ShowDialogCommand}" CommandParameter="Hello, World!" />
-        </VerticalStackLayout>-->
-    </Grid>
+            <Button Text="Save File..." Command="{Binding SaveFileCommand}" />
+            <Label Text="{Binding PickerSelectionText}" LineBreakMode="CharacterWrap" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="8">
+            <Button Text="Content Dialog..." Command="{Binding ShowContentDialogCommand}" />
+        </VerticalStackLayout>
+    </FlexLayout>    
 </ContentPage>
