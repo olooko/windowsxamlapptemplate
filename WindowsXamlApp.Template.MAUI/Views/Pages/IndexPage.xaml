@@ -6,7 +6,7 @@
              xmlns:viewModels="clr-namespace:WindowsXamlApp.Common.ViewModels.Pages;assembly=WindowsXamlApp.Common"
              x:Class="WindowsXamlApp.Template.MAUI.Views.Pages.IndexPage"
              x:DataType="viewModels:IndexPageViewModel">
-    <FlexLayout>
+    <FlexLayout Wrap="Wrap">
         <VerticalStackLayout Margin="8">
             <HorizontalStackLayout>
                 <CheckBox IsChecked="{Binding CheckBoxList[0].IsChecked}">
@@ -82,16 +82,16 @@
             <Label Text="{Binding ComboBoxSelectionText}" />
         </VerticalStackLayout>
         <VerticalStackLayout Margin="8">
-            <CollectionView ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}">
-                <CollectionView.ItemTemplate>
+            <ListView ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <Label Text="{Binding Text}" />
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </ListView.ItemTemplate>
+            </ListView>
             <Label Text="{Binding ListBoxSelectionText}" />
         </VerticalStackLayout>
-        <VerticalStackLayout Margin="8" MaximumWidthRequest="100">
+        <VerticalStackLayout Margin="8">
             <Button Text="Open File..." Command="{Binding OpenFileCommand}" />
             <Button Text="Save File..." Command="{Binding SaveFileCommand}" />
             <Label Text="{Binding PickerSelectionText}" LineBreakMode="CharacterWrap" />

@@ -14,31 +14,31 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         private readonly IDialogService _dialogService;
 
         [ObservableProperty]
-        private List<CheckBoxItemModel> _checkBoxList;
+        private List<CheckBoxItemModel>? _checkBoxList;
 
         [ObservableProperty]
         private string? _checkBoxStateText;
 
         [ObservableProperty]
-        private List<RadioButtonItemModel> _radioButtonList;
+        private List<RadioButtonItemModel>? _radioButtonList;
 
         [ObservableProperty]
         private string? _radioButtonStateText;
 
         [ObservableProperty]
-        private List<ComboBoxItemModel> _comboBoxList;
+        private List<ComboBoxItemModel>? _comboBoxList;
 
         [ObservableProperty]
-        private ComboBoxItemModel _comboBoxSelectedItem;
+        private ComboBoxItemModel? _comboBoxSelectedItem;
 
         [ObservableProperty]
         private string? _comboBoxSelectionText;
 
         [ObservableProperty]
-        private List<ListBoxItemModel> _listBoxList;
+        private List<ListBoxItemModel>? _listBoxList;
 
         [ObservableProperty]
-        private ListBoxItemModel _listBoxSelectedItem;
+        private ListBoxItemModel? _listBoxSelectedItem;
 
         [ObservableProperty]
         private string? _listBoxSelectionText;
@@ -102,26 +102,32 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         [RelayCommand]
         private void UpdateCheckBoxState(object code)
         {
-            CheckBoxItemModel? itemModel = this.CheckBoxList.Find(x => x.Code == (string)code);
-
-            if (itemModel != null)
+            if (this.CheckBoxList != null)
             {
-                this.CheckBoxStateText = string.Format("{0} is {1}.", itemModel.Code, itemModel.IsChecked ? "checked" : "unchecked");
+                CheckBoxItemModel? itemModel = this.CheckBoxList.Find(x => x.Code == (string)code);
+
+                if (itemModel != null)
+                {
+                    this.CheckBoxStateText = string.Format("{0} is {1}.", itemModel.Code, itemModel.IsChecked ? "checked" : "unchecked");
+                }
             }
         }
 
         [RelayCommand]
         private void UpdateRadioButtonState(object code)
         {
-            RadioButtonItemModel? itemModel = this.RadioButtonList.Find(x => x.Code == (string)code);
-
-            if (itemModel != null)
+            if (this.RadioButtonList != null)
             {
-                this.RadioButtonStateText = string.Format("{0} is {1}.", itemModel.Code, itemModel.IsChecked ? "checked" : "unchecked");
+                RadioButtonItemModel? itemModel = this.RadioButtonList.Find(x => x.Code == (string)code);
+
+                if (itemModel != null)
+                {
+                    this.RadioButtonStateText = string.Format("{0} is {1}.", itemModel.Code, itemModel.IsChecked ? "checked" : "unchecked");
+                }
             }
         }
 
-        partial void OnComboBoxSelectedItemChanged(ComboBoxItemModel value)
+        partial void OnComboBoxSelectedItemChanged(ComboBoxItemModel? value)
         {
             if (value != null)
             {
@@ -129,7 +135,7 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
             }
         }
 
-        partial void OnListBoxSelectedItemChanged(ListBoxItemModel value)
+        partial void OnListBoxSelectedItemChanged(ListBoxItemModel? value)
         {
             if (value != null)
             {

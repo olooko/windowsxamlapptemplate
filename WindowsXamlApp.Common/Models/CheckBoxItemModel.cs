@@ -2,8 +2,8 @@
 {
     public class CheckBoxItemModel
     {
-        public required bool IsChecked { get; set; }
-        public required string Code { get; set; }
-        public required string Text { get; set; }
+        public bool IsChecked { get; set; }
+        public string? Code { get; set; }
+        public string? Text { get; set; }
     }
 }

@@ -12,8 +12,7 @@ namespace WindowsXamlApp.Template.MAUI
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var indexPage = Ioc.Default.GetRequiredService<IndexPage>();
-            return new MainWindow(indexPage);
+            return new MainWindow(Ioc.Default.GetRequiredService<IndexPage>());
         }
     }
 }
