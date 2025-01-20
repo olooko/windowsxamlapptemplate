@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using WindowsXamlApp.Common.Services;
+﻿using WindowsXamlApp.Common.Services;
 
 namespace WindowsXamlApp.Template.WPF.Services
 {
@@ -7,7 +6,7 @@ namespace WindowsXamlApp.Template.WPF.Services
     {
         public void Show(string message)
         {
-            //MessageBox.Show(message);
+
         }
     }
 }

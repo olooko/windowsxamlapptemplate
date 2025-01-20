@@ -82,10 +82,12 @@
             <Label Text="{Binding ComboBoxSelectionText}" />
         </VerticalStackLayout>
         <VerticalStackLayout Margin="8">
-            <ListView ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}">
+            <ListView ItemsSource="{Binding ListBoxList}" SelectedItem="{Binding ListBoxSelectedItem}" WidthRequest="150">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Text}" />
+                    <DataTemplate x:DataType="models:ListBoxItemModel">
+                        <ViewCell>
+                            <Label Text="{Binding Text}" Margin="12" />
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -93,6 +95,7 @@
         </VerticalStackLayout>
         <VerticalStackLayout Margin="8">
             <Button Text="Open File..." Command="{Binding OpenFileCommand}" />
+            <BoxView HeightRequest="12" BackgroundColor="Transparent" />
             <Button Text="Save File..." Command="{Binding SaveFileCommand}" />
             <Label Text="{Binding PickerSelectionText}" LineBreakMode="CharacterWrap" />
         </VerticalStackLayout>

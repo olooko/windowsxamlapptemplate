@@ -6,7 +6,6 @@ namespace WindowsXamlApp.Template.WinUI.Services
     {
         public void Show(string message)
         {
-            //MessageBox.Show(message);
         }
     }
 }

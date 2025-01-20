@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using WindowsXamlApp.Common.Services;
+﻿using WindowsXamlApp.Common.Services;
 
 namespace WindowsXamlApp.Template.MAUI.Services
 {
@@ -7,7 +6,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
     {
         public void Show(string message)
         {
-            Toast.Make(message).Show();
+
         }
     }
 }
