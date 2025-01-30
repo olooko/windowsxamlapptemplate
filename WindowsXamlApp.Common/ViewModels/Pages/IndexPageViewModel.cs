@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
 using WindowsXamlApp.Common.Models;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Common.ViewModels.Dialogs;
@@ -10,9 +9,6 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
 {
     public partial class IndexPageViewModel : ViewModelBase
     {
-        private readonly IPickerService _pickerService;
-        private readonly IDialogService _dialogService;
-
         [ObservableProperty]
         private List<CheckBoxItemModel>? _checkBoxList;
 
@@ -62,9 +58,6 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
 
         public IndexPageViewModel()
         {
-            _dialogService = Ioc.Default.GetRequiredService<IDialogService>();
-            _pickerService = Ioc.Default.GetRequiredService<IPickerService>();
-
             this.CheckBoxList = new List<CheckBoxItemModel>();
             this.CheckBoxList.Add(new CheckBoxItemModel { IsChecked = true, Code = "A", Text = "체크 A" });
             this.CheckBoxList.Add(new CheckBoxItemModel { IsChecked = false, Code = "B", Text = "체크 B" });
@@ -162,13 +155,13 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         [RelayCommand]
         private void OpenFile()
         {
-            this.PickerSelectionText = _pickerService.OpenFile();
+            this.PickerSelectionText = Ioc.Default.GetRequiredService<IPickerService>().OpenFile();
         }
 
         [RelayCommand]
         private void SaveFile()
         {
-            this.PickerSelectionText = _pickerService.SaveFile();
+            this.PickerSelectionText = Ioc.Default.GetRequiredService<IPickerService>().SaveFile();
 
             // 일정 보기: 항상 표시되는 달력에서 단일 날짜 또는 날짜 범위를 선택하는 데 사용합니다.
             // 달력 날짜 선택기: 상황에 맞는 달력에서 단일 날짜를 선택하는 데 사용합니다.
@@ -178,10 +171,15 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         }
 
         [RelayCommand]
-        private async Task ShowContentDialog(object message)
+        private async Task ShowContentDialog()
         {
-            bool result = await _dialogService.ShowModalAsync<ContentDialogViewModel>();
+            bool result = await Ioc.Default.GetRequiredService<IDialogService>().ShowModalAsync<ContentDialogViewModel>();
         }
 
+        [RelayCommand]
+        private void ShowToast()
+        {
+            Ioc.Default.GetRequiredService<IToastService>().Show("This is toast message.");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using System.ComponentModel;
 using WindowsXamlApp.Common.Services;
 using WindowsXamlApp.Template.MAUI.Controls;
 
@@ -6,13 +7,10 @@ namespace WindowsXamlApp.Template.MAUI.Services
 {
     public sealed class DialogService : IDialogService
     {
-        private readonly IServiceProvider _serviceProvider;
-
         static readonly Dictionary<Type, Type> _viewModelToViewMappings = [];
 
-        public DialogService(IServiceProvider serviceProvider)
+        public DialogService()
         {
-            _serviceProvider = serviceProvider;
         }
 
         public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)
@@ -33,7 +31,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
             var currentPage = window.Page as ContentPage;
 
-            var userDialog = _serviceProvider.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
+            var userDialog = Ioc.Default.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
 
             if (currentPage != null && userDialog != null)
             {
