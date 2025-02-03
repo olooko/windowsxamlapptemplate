@@ -1,4 +1,5 @@
-﻿using WindowsXamlApp.Common.Services;
+﻿using Microsoft.Maui.Graphics.Text;
+using WindowsXamlApp.Common.Services;
 
 namespace WindowsXamlApp.Template.MAUI.Services
 {
@@ -23,6 +24,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
             public ToastWindowOverlayElement(IWindowOverlay overlay, Color? background = null, Color? spinner = null)
             {
                 _overlay = overlay;
+
                 if (background != null)
                     this._backgroundColor = background;
                 if (spinner != null)
@@ -34,16 +36,21 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
             public void Draw(ICanvas canvas, RectF dirtyRect)
             {
-                this._backgroundRect = new RectF(0, 0, 200, 200); //dirtyRect;
-                canvas.FillColor = _backgroundColor;
-                canvas.StrokeColor = _loadingSpinnerColor;
+                var font = new Microsoft.Maui.Graphics.Font("Arial");
+                canvas.Font = font;
                 canvas.FontColor = _loadingSpinnerColor;
-                canvas.FontSize = 45f;
+                canvas.FontSize = 18f;
 
-                canvas.FillRectangle(this._backgroundRect);
+                SizeF stringSize = canvas.GetStringSize("Now Loading...", font, 18f);
 
-                
-                canvas.DrawString("Now Loading...", dirtyRect.Width / 2, dirtyRect.Height / 2, HorizontalAlignment.Center);
+                this._backgroundRect = new RectF(dirtyRect.Width / 2, dirtyRect.Height / 2, stringSize.Width, stringSize.Height);// dirtyRect;
+                canvas.FillColor = _backgroundColor;
+                canvas.StrokeColor = Colors.Red;
+
+
+                canvas.FillRectangle(_backgroundRect);
+
+                canvas.DrawString("Now Loading...", dirtyRect.Width / 2, dirtyRect.Height / 2, stringSize.Width, stringSize.Height, HorizontalAlignment.Center, VerticalAlignment.Bottom);
             }
         }
 
