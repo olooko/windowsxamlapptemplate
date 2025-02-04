@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,10 @@ namespace WindowsXamlApp.Template.WinUI.Services
 {
     public sealed class DialogService : IDialogService
     {
-        private readonly IServiceProvider _serviceProvider;
-
         static readonly Dictionary<Type, Type> _viewModelToViewMappings = [];
 
-        public DialogService(IServiceProvider serviceProvider)
+        public DialogService()
         {
-            _serviceProvider = serviceProvider;
         }
 
         public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)
@@ -32,11 +30,11 @@ namespace WindowsXamlApp.Template.WinUI.Services
 
         public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged
         {
-            var window = _serviceProvider.GetRequiredService<MainWindow>();
+            var window = Ioc.Default.GetRequiredService<MainWindow>();
 
             window.DialogContent.Visibility = Visibility.Visible;
 
-            var userDialog = _serviceProvider.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
+            var userDialog = Ioc.Default.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
             window.DialogContent.Child = userDialog;
 
             bool result = false;

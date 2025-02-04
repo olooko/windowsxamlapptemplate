@@ -88,5 +88,8 @@
         <StackPanel Margin="8">
             <Button Content="Content Dialog..." Command="{Binding ShowContentDialogCommand}" />
         </StackPanel>
+        <StackPanel Margin="8">
+            <Button Content="Show Toast" Command="{Binding ShowToastCommand}" />
+        </StackPanel>
     </VariableSizedWrapGrid>
 </Page>

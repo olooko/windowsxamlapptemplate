@@ -1,69 +1,91 @@
-﻿using Microsoft.Maui.Graphics.Text;
+﻿using Microsoft.Maui.Animations;
+using Microsoft.Maui.Graphics.Text;
 using WindowsXamlApp.Common.Services;
 
 namespace WindowsXamlApp.Template.MAUI.Services
 {
     public class ToastWindowOverlay : WindowOverlay
     {
-        private IWindowOverlayElement _toastWindowOverlayElement;
+        private ToastWindowOverlayElement _toastWindowOverlayElement;
 
-        public ToastWindowOverlay(IWindow window) : base(window)
+        public ToastWindowOverlay(IWindow window, string message) : base(window)
         {
-            _toastWindowOverlayElement = new ToastWindowOverlayElement(this);
+            _toastWindowOverlayElement = new ToastWindowOverlayElement(message);
+
+            //var alphaAnimation = new Animation(v => windowElement.Alpha = (float)v, 0, 1);
+
             AddWindowElement(_toastWindowOverlayElement);
+            //alphaAnimation.Commit((IAnimatable)this, "alpha");
+
+            //System.Timers.Timer timer = new System.Timers.Timer();
+            //timer.Elapsed += Timer_Elapsed;
+            //timer.Interval = 100;
+            //timer.Start();
         }
 
-        class ToastWindowOverlayElement : IWindowOverlayElement
+        //private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        //{
+
+        //    _toastWindowOverlayElement.Alpha += 0.01f;
+        //    //_toastWindowOverlayElement.GenericLerp
+
+        //    if (_toastWindowOverlayElement.Alpha > 100f)
+        //    {
+        //        System.Timers.Timer timer = (System.Timers.Timer)sender!;
+        //        timer.Stop();
+        //    }
+        //}
+
+        private class ToastWindowOverlayElement : IWindowOverlayElement
         {
-            readonly IWindowOverlay _overlay;
-
-            RectF _backgroundRect = new RectF();
-            Color _backgroundColor = Color.FromArgb("FF000000");
-            Color _loadingSpinnerColor = Colors.White;
-
-            public ToastWindowOverlayElement(IWindowOverlay overlay, Color? background = null, Color? spinner = null)
+            private float _alpha = 1.0f;
+            public float Alpha
             {
-                _overlay = overlay;
+                get => _alpha;
+                set => _alpha = value;
+            }
 
-                if (background != null)
-                    this._backgroundColor = background;
-                if (spinner != null)
-                    _loadingSpinnerColor = spinner;
+            private string _message;
+
+            public ToastWindowOverlayElement(string message)
+            {
+                _message = message;
             }
 
             public bool Contains(Point point)
-                => this._backgroundRect.Contains(new Point(point.X / _overlay.Density, point.Y / _overlay.Density));
+                => true;
 
             public void Draw(ICanvas canvas, RectF dirtyRect)
             {
+                float fontSize = 18f;
                 var font = new Microsoft.Maui.Graphics.Font("Arial");
+
                 canvas.Font = font;
-                canvas.FontColor = _loadingSpinnerColor;
-                canvas.FontSize = 18f;
+                canvas.FontSize = fontSize;
+                canvas.FontColor = Colors.White;
+                canvas.FillColor = Colors.Black;
+                canvas.Alpha = _alpha;
 
-                SizeF stringSize = canvas.GetStringSize("Now Loading...", font, 18f);
+                SizeF stringSize = canvas.GetStringSize(_message, font, fontSize);
 
-                this._backgroundRect = new RectF(dirtyRect.Width / 2, dirtyRect.Height / 2, stringSize.Width, stringSize.Height);// dirtyRect;
-                canvas.FillColor = _backgroundColor;
-                canvas.StrokeColor = Colors.Red;
+                float width = stringSize.Width * 1.2f;
+                float height = stringSize.Height * 2.0f;
+                float x = (dirtyRect.Width - width) / 2.0f;
+                float y = dirtyRect.Height - (height * 1.5f);
 
+                canvas.FillRoundedRectangle(x, y, width, height, 8);
 
-                canvas.FillRectangle(_backgroundRect);
-
-                canvas.DrawString("Now Loading...", dirtyRect.Width / 2, dirtyRect.Height / 2, stringSize.Width, stringSize.Height, HorizontalAlignment.Center, VerticalAlignment.Bottom);
+                canvas.DrawString(_message, x, y, width, height, HorizontalAlignment.Center, VerticalAlignment.Center);
             }
         }
-
     }
-
-
 
     public sealed class ToastService : IToastService
     {
         public void Show(string message)
         {
             var window = App.Current!.Windows[0];
-            window.AddOverlay(new ToastWindowOverlay(window));
+            window.AddOverlay(new ToastWindowOverlay(window, message));
         }
     }
 }

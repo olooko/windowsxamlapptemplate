@@ -24,6 +24,7 @@ namespace WindowsXamlApp.Template.WinUI
 
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IPickerService, PickerService>();
+            builder.Services.AddSingleton<IToastService, ToastService>();
 
             builder.Services.AddSingleton<IndexPage>();
 
@@ -40,7 +41,7 @@ namespace WindowsXamlApp.Template.WinUI
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             var page = Ioc.Default.GetRequiredService<IndexPage>();
-            window.FrameContent.Content = page;
+            window.MainFrame.Content = page;
             window.Activate();
         }
     }

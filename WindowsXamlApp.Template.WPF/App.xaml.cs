@@ -24,6 +24,7 @@ namespace WindowsXamlApp.Template.WPF
 
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IPickerService, PickerService>();
+            builder.Services.AddSingleton<IToastService, ToastService>();
 
             builder.Services.AddTransient<IndexPage>();
 
@@ -42,7 +43,7 @@ namespace WindowsXamlApp.Template.WPF
 
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             var page = Ioc.Default.GetRequiredService<IndexPage>();
-            window.FrameContent.Navigate(page);
+            window.MainFrame.Navigate(page);
             window.Show();
         }
     }
