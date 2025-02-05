@@ -7,10 +7,11 @@
         Height="450" Width="800"
         Title="Windows XAML Application by WPF">
     <Grid>
-        <Frame x:Name="MainFrame" />
-        <Border x:Name="DialogContent" Background="#88000000" Visibility="Collapsed" />
-        <Border x:Name="ToastContent" Background="Black" CornerRadius="8" Margin="8" VerticalAlignment="Bottom" HorizontalAlignment="Center" Visibility="Collapsed">
-            <TextBlock Text="Now Loading...." Foreground="White" Margin="8" />
-        </Border>    </Grid>
+        <Frame x:Name="MainFrame" x:FieldModifier="public" />
+        <Border x:Name="DialogContent" x:FieldModifier="public" Background="#88000000" Visibility="Collapsed" />
+        <Border x:Name="ToastContent" x:FieldModifier="public" Background="Black" CornerRadius="8" Margin="8" VerticalAlignment="Bottom" HorizontalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Foreground="White" Margin="8" />
+        </Border>    
+    </Grid>
 </Window>
 
