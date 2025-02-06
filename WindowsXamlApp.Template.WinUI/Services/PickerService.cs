@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Windows.Storage.Pickers;
 using WindowsXamlApp.Common.Services;
 

@@ -9,19 +9,22 @@ namespace WindowsXamlApp.Template.WinUI.Services
 {
     public class ToastService : IToastService
     {
-        public void Show(string message)
+        public void Show(string message, long duration, double fontSize)
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
-            (window.ToastContent.Child as TextBlock)!.Text = message;
+            var textblock = (window.ToastContent.Child as TextBlock)!;
 
-            window.ToastContent.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
+            textblock.Text = message;
+            textblock.FontSize = fontSize;
+
+            window.ToastContent.Visibility = Visibility.Visible;
 
             var doubleAnimation = new DoubleAnimation();
             doubleAnimation.From = 0;
             doubleAnimation.To = 1;
-            doubleAnimation.Duration = TimeSpan.FromSeconds(3);
+            doubleAnimation.Duration = TimeSpan.FromMilliseconds(duration);
             doubleAnimation.AutoReverse = true;
-
+                                            
             var powerEase = new PowerEase();
             powerEase.Power = 10;
             powerEase.EasingMode = EasingMode.EaseOut;
@@ -41,7 +44,7 @@ namespace WindowsXamlApp.Template.WinUI.Services
         private void ShowToastStoryBoard_Completed(object? sender, object e)
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
-            window.ToastContent.Visibility = Microsoft.UI.Xaml.Visibility.Collapsed;
+            window.ToastContent.Visibility = Visibility.Collapsed;
         }
     }
 }
