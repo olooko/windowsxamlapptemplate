@@ -21,7 +21,7 @@ namespace WindowsXamlApp.Template.WPF.Services
             var doubleAnimation = new DoubleAnimation();
             doubleAnimation.From = 0;
             doubleAnimation.To = 1;
-            doubleAnimation.Duration = TimeSpan.FromMilliseconds(duration);
+            doubleAnimation.Duration = TimeSpan.FromMilliseconds(duration / 2);
             doubleAnimation.AutoReverse = true;
 
             var powerEase = new PowerEase();

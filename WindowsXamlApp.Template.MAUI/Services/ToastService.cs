@@ -13,9 +13,10 @@ namespace WindowsXamlApp.Template.MAUI.Services
         private class ToastWindowOverlay : WindowOverlay
         {
             private ToastWindowOverlayElement _toastWindowOverlayElement;
-            private int _totalCount;
-            private int _currentCount;
-            private Easing _easing;
+            private int _totalElapsedCount;
+            private int _currentElapsedCount;
+            //private Easing _easing;
+            private bool _isReverse;
 
             public ToastWindowOverlay(IWindow window, string message, long duration, double fontSize) : base(window)
             {
@@ -27,10 +28,12 @@ namespace WindowsXamlApp.Template.MAUI.Services
                 timer.Elapsed += Timer_Elapsed;
                 timer.Interval = 10;
 
-                _totalCount = (int)(duration / timer.Interval);
-                _currentCount = 0;
+                _totalElapsedCount = (int)(duration / timer.Interval) / 2;
+                _currentElapsedCount = 0;
 
-                _easing = Easing.CubicOut;
+                //_easing = Easing.CubicOut;
+
+                _isReverse = false;
 
                 timer.Start();
             }
@@ -39,29 +42,40 @@ namespace WindowsXamlApp.Template.MAUI.Services
             {
                 System.Timers.Timer timer = (System.Timers.Timer)sender!;
 
-                if (_currentCount >= _totalCount)
-                {
-                    timer.Stop();
-                    return;
-
-                    //window.Dispatcher.Dispatch(() => {
-                    //    window.RemoveOverlay(_toastWindowOverlay);
-                    //});
-                }
-
                 if (App.Current!.Windows.Count > 0)
                 {
                     var window = App.Current!.Windows[0];
 
                     window.Dispatcher.Dispatch(() => {
 
-                        double count = _currentCount++;
+                        if (_isReverse == false)
+                        {
+                            _toastWindowOverlayElement.Alpha = (float)PowerEase((double)_currentElapsedCount++ / _totalElapsedCount, 10);
 
-                        _toastWindowOverlayElement.Alpha = (float)_easing.Ease(count / _totalCount);
+                            if (_currentElapsedCount >= _totalElapsedCount)
+                            {
+                                _isReverse = true;
+                            }
+                        }
+                        else
+                        {
+                            _toastWindowOverlayElement.Alpha = (float)PowerEase((double)_currentElapsedCount-- / _totalElapsedCount, 10);
+
+                            if (_currentElapsedCount <= 0)
+                            {
+                                timer.Stop();
+                                window.RemoveOverlay(this);
+                            }
+                        }
 
                         this.Invalidate();
                     });
                 }
+            }
+
+            private double PowerEase(double t, double power)
+            {
+                return 1 - Math.Pow(1 - t, power);
             }
 
             private class ToastWindowOverlayElement : IWindowOverlayElement
