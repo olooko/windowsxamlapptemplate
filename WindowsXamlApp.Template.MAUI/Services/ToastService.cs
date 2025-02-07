@@ -15,7 +15,6 @@ namespace WindowsXamlApp.Template.MAUI.Services
             private ToastWindowOverlayElement _toastWindowOverlayElement;
             private int _totalElapsedCount;
             private int _currentElapsedCount;
-            //private Easing _easing;
             private bool _isReverse;
 
             public ToastWindowOverlay(IWindow window, string message, long duration, double fontSize) : base(window)
@@ -30,8 +29,6 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
                 _totalElapsedCount = (int)(duration / timer.Interval) / 2;
                 _currentElapsedCount = 0;
-
-                //_easing = Easing.CubicOut;
 
                 _isReverse = false;
 

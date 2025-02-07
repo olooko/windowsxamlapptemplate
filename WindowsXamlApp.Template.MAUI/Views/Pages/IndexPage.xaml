@@ -105,5 +105,8 @@
         <VerticalStackLayout Margin="8">
             <Button Text="Show Toast" Command="{Binding ShowToastCommand}" />
         </VerticalStackLayout>
+        <VerticalStackLayout Margin="8">
+            <Button Text="Navigate Page" Command="{Binding NavigatePageCommand}" />
+        </VerticalStackLayout>
     </FlexLayout>    
 </ContentPage>

@@ -31,10 +31,13 @@ namespace WindowsXamlApp.Template.MAUI
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IPickerService, PickerService>();
             builder.Services.AddSingleton<IToastService, ToastService>();
+            builder.Services.AddSingleton<IPageService, PageService>();
 
             builder.Services.AddTransient<IndexPage>();
+            builder.Services.AddTransient<OtherPage>();
 
             builder.Services.AddTransient<IndexPageViewModel>();
+            builder.Services.AddTransient<OtherPageViewModel>();
 
             builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
 

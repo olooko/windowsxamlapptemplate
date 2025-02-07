@@ -42,20 +42,6 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         [ObservableProperty]
         private string? _pickerSelectionText;
 
-        //[ObservableProperty]
-        //private ObservableCollection<MenuListItemModel> _menuList;
-
-        //[ObservableProperty]
-        //private MenuListItemModel? _selectedMenuListItem;
-
-        //[ObservableProperty]
-        //private string? _selectedText;
-
-        //private System.Timers.Timer _timer;
-
-        //[ObservableProperty]
-        //private string? _currentTimeString;
-
         public IndexPageViewModel()
         {
             this.CheckBoxList = new List<CheckBoxItemModel>();
@@ -81,15 +67,6 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
             this.ListBoxList.Add(new ListBoxItemModel { Code = "N", Text = "리스트 N" });
             this.ListBoxList.Add(new ListBoxItemModel { Code = "O", Text = "리스트 O" });
             this.ListBoxList.Add(new ListBoxItemModel { Code = "P", Text = "리스트 P" });
-
-            //_menuList = new ObservableCollection<MenuListItemModel>();
-            //_menuList.Add(new MenuListItemModel { Title = "Controls", Code = 1 });
-            //_menuList.Add(new MenuListItemModel { Title = "Alerts", Code = 2 });
-
-            //_timer = new System.Timers.Timer();
-            //_timer.Interval = 500;
-            //_timer.Elapsed += Timer_Elapsed;
-            //_timer.Start();
         }
 
         [RelayCommand]
@@ -136,22 +113,6 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
             }
         }
 
-        //[RelayCommand]
-        //private void MenuListItemSelected()
-        //{
-        //    this.SelectedText = string.Format("[{0}] is selected.", this.SelectedMenuListItem.Title);
-        //}
-
-        //private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-        //{
-        //    _timer.Stop();
-
-
-        //    this.CurrentTimeString = DateTime.Now.ToString();
-
-        //    _timer.Start();
-        //}
-
         [RelayCommand]
         private void OpenFile()
         {
@@ -180,6 +141,13 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         private void ShowToast()
         {
             Ioc.Default.GetRequiredService<IToastService>().Show("This is toast message.");
+        }
+
+        [RelayCommand]
+        private void NavigatePage()
+        {
+            //Ioc.Default.GetRequiredService<OtherPage>().Navigate("This is toast message.");
+            Ioc.Default.GetRequiredService<IPageService>().Navigate("This is toast message.");
         }
     }
 }
