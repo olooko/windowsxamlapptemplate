@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using WindowsXamlApp.Common.Services;
 
@@ -8,7 +9,7 @@ namespace WindowsXamlApp.Template.WinUI.Services
 {
     public sealed class PickerService : IPickerService
     {
-        public string OpenFile()
+        public async Task<string> OpenFileAsync()
         {
             var openPicker = new FileOpenPicker();
 
@@ -24,12 +25,12 @@ namespace WindowsXamlApp.Template.WinUI.Services
             var file = openPicker.PickSingleFileAsync().GetAwaiter().GetResult();
 
             if (file != null)
-                return file.Path;
+                return await Task.FromResult(file.Path);
 
-            return string.Empty;
+            return await Task.FromResult(string.Empty);
         }
 
-        public string SaveFile()
+        public async Task<string> SaveFileAsync()
         {
             var savePicker = new FileSavePicker();
 
@@ -45,9 +46,9 @@ namespace WindowsXamlApp.Template.WinUI.Services
             var file = savePicker.PickSaveFileAsync().GetAwaiter().GetResult();
 
             if (file != null)
-                return file.Path;
+                return await Task.FromResult(file.Path);
 
-            return string.Empty;
+            return await Task.FromResult(string.Empty);
         }
     }
 }

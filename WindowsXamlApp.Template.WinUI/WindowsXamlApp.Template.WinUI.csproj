@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="Views\ContentDialog.xaml" />
     <None Remove="Views\IndexPage.xaml" />
+    <None Remove="Views\Pages\OtherPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Dialogs\" />
-    <Folder Include="Views\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\OtherPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!--

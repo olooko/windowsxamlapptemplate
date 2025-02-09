@@ -114,15 +114,15 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         }
 
         [RelayCommand]
-        private void OpenFile()
+        private async Task OpenFile()
         {
-            this.PickerSelectionText = Ioc.Default.GetRequiredService<IPickerService>().OpenFile();
+            this.PickerSelectionText = await Ioc.Default.GetRequiredService<IPickerService>().OpenFileAsync();
         }
 
         [RelayCommand]
-        private void SaveFile()
+        private async Task SaveFile()
         {
-            this.PickerSelectionText = Ioc.Default.GetRequiredService<IPickerService>().SaveFile();
+            this.PickerSelectionText = await Ioc.Default.GetRequiredService<IPickerService>().SaveFileAsync();
 
             // 일정 보기: 항상 표시되는 달력에서 단일 날짜 또는 날짜 범위를 선택하는 데 사용합니다.
             // 달력 날짜 선택기: 상황에 맞는 달력에서 단일 날짜를 선택하는 데 사용합니다.
@@ -146,8 +146,7 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         [RelayCommand]
         private void NavigatePage()
         {
-            //Ioc.Default.GetRequiredService<OtherPage>().Navigate("This is toast message.");
-            Ioc.Default.GetRequiredService<IPageService>().Navigate("This is toast message.");
+            Ioc.Default.GetRequiredService<IPageService>().Navigate<OtherPageViewModel>();
         }
     }
 }

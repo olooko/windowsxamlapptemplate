@@ -25,10 +25,10 @@ namespace WindowsXamlApp.Template.WinUI
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IPickerService, PickerService>();
             builder.Services.AddSingleton<IToastService, ToastService>();
+            builder.Services.AddSingleton<IPageService, PageService>();
 
-            builder.Services.AddSingleton<IndexPage>();
-
-            builder.Services.AddSingleton<IndexPageViewModel>();
+            builder.Services.AddTransientPage<IndexPage, IndexPageViewModel>();
+            builder.Services.AddTransientPage<OtherPage, OtherPageViewModel>();
 
             builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
 
@@ -39,10 +39,8 @@ namespace WindowsXamlApp.Template.WinUI
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            var window = Ioc.Default.GetRequiredService<MainWindow>();
-            var page = Ioc.Default.GetRequiredService<IndexPage>();
-            window.MainFrame.Content = page;
-            window.Activate();
+            Ioc.Default.GetRequiredService<MainWindow>().Activate();
+            Ioc.Default.GetRequiredService<IPageService>().Navigate<IndexPageViewModel>();
         }
     }
 }

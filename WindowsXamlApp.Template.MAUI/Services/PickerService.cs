@@ -11,7 +11,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
         {
         }
 
-        public string OpenFile()
+        public async Task<string> OpenFileAsync()
         {
             //var options = new PickOptions
             //{
@@ -30,12 +30,12 @@ namespace WindowsXamlApp.Template.MAUI.Services
             //if (result != null)
             //    return result.FullPath;
 
-            return string.Empty;
+            return await Task.FromResult(string.Empty);
         }
 
-        public string SaveFile()
+        public async Task<string> SaveFileAsync()
         {
-            return string.Empty;
+            return await Task.FromResult(string.Empty);
         }
     }
 }

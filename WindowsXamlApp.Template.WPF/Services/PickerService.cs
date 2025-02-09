@@ -5,7 +5,7 @@ namespace WindowsXamlApp.Template.WPF.Services
 {
     public sealed class PickerService : IPickerService
     {
-        public string OpenFile()
+        public async Task<string> OpenFileAsync()
         {
             var dialog = new OpenFileDialog();
             dialog.DefaultExt = ".txt";
@@ -14,12 +14,12 @@ namespace WindowsXamlApp.Template.WPF.Services
             bool? result = dialog.ShowDialog();
 
             if (result == true)
-                return dialog.FileName;
+                return await Task.FromResult(dialog.FileName);
             
-            return string.Empty;
+            return await Task.FromResult(string.Empty);
         }
 
-        public string SaveFile()
+        public async Task<string> SaveFileAsync()
         {
             var dialog = new SaveFileDialog();
             dialog.FileName = "FileName";
@@ -29,9 +29,9 @@ namespace WindowsXamlApp.Template.WPF.Services
             bool? result = dialog.ShowDialog();
 
             if (result == true)
-                return dialog.FileName;
-            
-            return string.Empty;
+                return await Task.FromResult(dialog.FileName);
+
+            return await Task.FromResult(string.Empty);
         }
 
         public void SelectColor()

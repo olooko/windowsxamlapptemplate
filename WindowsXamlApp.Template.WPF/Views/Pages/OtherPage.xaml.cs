@@ -4,13 +4,13 @@ using WindowsXamlApp.Common.ViewModels.Pages;
 
 namespace WindowsXamlApp.Template.WPF.Views.Pages
 {
-    public partial class IndexPage : Page
+    public partial class OtherPage : Page
     {
-        public IndexPage()
+        public OtherPage()
         {
             InitializeComponent();
 
-            this.DataContext = Ioc.Default.GetRequiredService<IndexPageViewModel>();
+            this.DataContext = Ioc.Default.GetRequiredService<OtherPageViewModel>();
         }
     }
 }

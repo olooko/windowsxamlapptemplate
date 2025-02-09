@@ -14,8 +14,14 @@ namespace WindowsXamlApp.Template.WinUI.Services
     {
         static readonly Dictionary<Type, Type> _viewModelToViewMappings = [];
 
-        public DialogService()
+        public static void AddSingleton<TDialog, TDialogViewModel>(IServiceCollection services)
+            where TDialog : UserDialog
+            where TDialogViewModel : INotifyPropertyChanged
         {
+            _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
+
+            services.AddSingleton(typeof(TDialog));
+            services.AddSingleton(typeof(TDialogViewModel));
         }
 
         public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)

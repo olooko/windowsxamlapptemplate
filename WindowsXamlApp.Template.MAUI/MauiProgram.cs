@@ -28,16 +28,15 @@ namespace WindowsXamlApp.Template.MAUI
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            //builder.Services.AddSingleton<MainWindow>();
+
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IPickerService, PickerService>();
             builder.Services.AddSingleton<IToastService, ToastService>();
             builder.Services.AddSingleton<IPageService, PageService>();
 
-            builder.Services.AddTransient<IndexPage>();
-            builder.Services.AddTransient<OtherPage>();
-
-            builder.Services.AddTransient<IndexPageViewModel>();
-            builder.Services.AddTransient<OtherPageViewModel>();
+            builder.Services.AddTransientPage<IndexPage, IndexPageViewModel>();
+            builder.Services.AddTransientPage<OtherPage, OtherPageViewModel>();
 
             builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
 

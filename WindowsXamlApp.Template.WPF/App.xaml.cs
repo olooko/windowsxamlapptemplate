@@ -14,8 +14,6 @@ namespace WindowsXamlApp.Template.WPF
 {
     public partial class App : Application
     {
-        //protected readonly IHost? _host;
-
         public App()
         {
             var builder = Host.CreateApplicationBuilder();
@@ -25,10 +23,10 @@ namespace WindowsXamlApp.Template.WPF
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IPickerService, PickerService>();
             builder.Services.AddSingleton<IToastService, ToastService>();
+            builder.Services.AddSingleton<IPageService, PageService>();
 
-            builder.Services.AddTransient<IndexPage>();
-
-            builder.Services.AddTransient<IndexPageViewModel>();
+            builder.Services.AddTransientPage<IndexPage, IndexPageViewModel>();
+            builder.Services.AddTransientPage<OtherPage, OtherPageViewModel>();
 
             builder.Services.AddTransientDialog<ContentDialog, ContentDialogViewModel>();
             
@@ -41,10 +39,8 @@ namespace WindowsXamlApp.Template.WPF
         {
             base.OnStartup(args);
 
-            var window = Ioc.Default.GetRequiredService<MainWindow>();
-            var page = Ioc.Default.GetRequiredService<IndexPage>();
-            window.MainFrame.Navigate(page);
-            window.Show();
+            Ioc.Default.GetRequiredService<MainWindow>().Show();
+            Ioc.Default.GetRequiredService<IPageService>().Navigate<IndexPageViewModel>();
         }
     }
 }

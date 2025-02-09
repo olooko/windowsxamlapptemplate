@@ -63,9 +63,8 @@
         </StackPanel>
         <StackPanel Margin="8">
             <Button Content="Content Dialog..." Command="{Binding ShowContentDialogCommand}" />
-        </StackPanel>
-        <StackPanel Margin="8">
             <Button Content="Show Toast" Command="{Binding ShowToastCommand}" />
+            <Button Content="Navigate Page" Command="{Binding NavigatePageCommand}" />
         </StackPanel>
     </WrapPanel>
 </Page>

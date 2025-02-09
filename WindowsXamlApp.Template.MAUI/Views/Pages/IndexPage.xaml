@@ -101,12 +101,8 @@
         </VerticalStackLayout>
         <VerticalStackLayout Margin="8">
             <Button Text="Content Dialog..." Command="{Binding ShowContentDialogCommand}" />
-        </VerticalStackLayout>
-        <VerticalStackLayout Margin="8">
             <Button Text="Show Toast" Command="{Binding ShowToastCommand}" />
-        </VerticalStackLayout>
-        <VerticalStackLayout Margin="8">
-            <Button Text="Navigate Page" Command="{Binding NavigatePageCommand}" />
+            <Button Text="Navigate Page" Clicked="Button_Clicked" />
         </VerticalStackLayout>
     </FlexLayout>    
 </ContentPage>
