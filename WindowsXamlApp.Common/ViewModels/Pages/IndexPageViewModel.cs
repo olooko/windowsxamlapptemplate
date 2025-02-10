@@ -138,15 +138,15 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
         }
 
         [RelayCommand]
-        private void ShowToast()
+        private async Task ShowToast()
         {
-            Ioc.Default.GetRequiredService<IToastService>().Show("This is toast message.");
+            await Ioc.Default.GetRequiredService<IToastService>().ShowAsync("This is toast message.");
         }
 
         [RelayCommand]
-        private void NavigatePage()
+        private async Task NavigatePage()
         {
-            Ioc.Default.GetRequiredService<IPageService>().Navigate<OtherPageViewModel>();
+            await Ioc.Default.GetRequiredService<IPageService>().NavigateAsync<OtherPageViewModel>();
         }
     }
 }

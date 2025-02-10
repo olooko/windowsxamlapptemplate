@@ -4,12 +4,13 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml;
 using System;
 using WindowsXamlApp.Common.Services;
+using System.Threading.Tasks;
 
 namespace WindowsXamlApp.Template.WinUI.Services
 {
     public class ToastService : IToastService
     {
-        public void Show(string message, long duration, double fontSize)
+        public async Task ShowAsync(string message, long duration, double fontSize)
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             var textblock = (window.ToastContent.Child as TextBlock)!;
@@ -39,6 +40,8 @@ namespace WindowsXamlApp.Template.WinUI.Services
             showToastStoryBoard.Completed += ShowToastStoryBoard_Completed;
             
             showToastStoryBoard.Begin();
+
+            await Task.CompletedTask;
         }
 
         private void ShowToastStoryBoard_Completed(object? sender, object e)

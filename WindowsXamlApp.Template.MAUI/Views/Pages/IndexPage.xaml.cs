@@ -11,9 +11,4 @@ public partial class IndexPage : ContentPage
 
 		this.BindingContext = Ioc.Default.GetRequiredService<IndexPageViewModel>();
 	}
-
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-		await Shell.Current.GoToAsync(nameof(OtherPage));
-    }
 }

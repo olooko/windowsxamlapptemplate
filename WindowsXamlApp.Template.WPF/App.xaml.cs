@@ -40,7 +40,7 @@ namespace WindowsXamlApp.Template.WPF
             base.OnStartup(args);
 
             Ioc.Default.GetRequiredService<MainWindow>().Show();
-            Ioc.Default.GetRequiredService<IPageService>().Navigate<IndexPageViewModel>();
+            Ioc.Default.GetRequiredService<IPageService>().NavigateAsync<IndexPageViewModel>();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
-using System.ComponentModel;
 using WindowsXamlApp.Common.Services;
+using WindowsXamlApp.Common.ViewModels;
 
 namespace WindowsXamlApp.Template.MAUI.Services
 {
@@ -10,43 +10,30 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
         public static void AddSingleton<TPage, TPageViewModel>(IServiceCollection services)
             where TPage : Page
-            where TPageViewModel : INotifyPropertyChanged
+            where TPageViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TPageViewModel), typeof(TPage));
 
-            services.AddSingleton(typeof(TPage));
-            services.AddSingleton(typeof(TPageViewModel));
+            services.AddSingletonWithShellRoute<TPage, TPageViewModel>(typeof(TPage).Name);
         }
 
         public static void AddTransient<TPage, TPageViewModel>(IServiceCollection services)
             where TPage : Page
-            where TPageViewModel : INotifyPropertyChanged
+            where TPageViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TPageViewModel), typeof(TPage));
 
-            services.AddTransient(typeof(TPage));
-            services.AddTransient(typeof(TPageViewModel));
-
-            //services.AddTransientWithShellRoute<TPage, TPageViewModel>(nameof(TPage));
+            services.AddTransientWithShellRoute<TPage, TPageViewModel>(typeof(TPage).Name);
         }
 
-        public void Navigate<TViewModel>() where TViewModel : INotifyPropertyChanged
+        public async Task NavigateAsync<TViewModel>() where TViewModel : ViewModelBase
         {
-            //Shell.Current
-            //var window = Ioc.Default.GetRequiredService<MainWindow>();
-
-            //var page = Ioc.Default.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as Page;
-
-            //window.Page = page;
-            //window.MainFrame.Navigate(_viewModelToViewMappings[typeof(TViewModel)], null, new SuppressNavigationTransitionInfo());
-
-            //Shell.Current.GoToAsync(nameof(_viewModelToViewMappings[typeof(TViewModel)]));
+            await Shell.Current.GoToAsync(_viewModelToViewMappings[typeof(TViewModel)].Name);
         }
 
-        public void GoBack()
+        public async Task GoBackAsync()
         {
-            //var window = Ioc.Default.GetRequiredService<MainWindow>();
-            //window.Navigation.PopAsync();
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

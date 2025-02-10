@@ -1,7 +1,4 @@
-﻿using CommunityToolkit.Maui.Storage;
-using System;
-using System.Threading;
-using WindowsXamlApp.Common.Services;
+﻿using WindowsXamlApp.Common.Services;
 
 namespace WindowsXamlApp.Template.MAUI.Services
 {

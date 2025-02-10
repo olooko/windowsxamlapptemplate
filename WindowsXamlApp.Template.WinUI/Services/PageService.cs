@@ -5,12 +5,9 @@ using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.WebUI;
 using WindowsXamlApp.Common.Services;
-using WindowsXamlApp.Template.WinUI.Views.Pages;
+using WindowsXamlApp.Common.ViewModels;
 
 namespace WindowsXamlApp.Template.WinUI.Services
 {
@@ -20,7 +17,7 @@ namespace WindowsXamlApp.Template.WinUI.Services
 
         public static void AddSingleton<TPage, TPageViewModel>(IServiceCollection services)
             where TPage : Page
-            where TPageViewModel : INotifyPropertyChanged
+            where TPageViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TPageViewModel), typeof(TPage));
 
@@ -30,7 +27,7 @@ namespace WindowsXamlApp.Template.WinUI.Services
 
         public static void AddTransient<TPage, TPageViewModel>(IServiceCollection services)
             where TPage : Page
-            where TPageViewModel : INotifyPropertyChanged
+            where TPageViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TPageViewModel), typeof(TPage));
 
@@ -38,16 +35,20 @@ namespace WindowsXamlApp.Template.WinUI.Services
             services.AddTransient(typeof(TPageViewModel));
         }
 
-        public void Navigate<TViewModel>() where TViewModel : INotifyPropertyChanged
+        public async Task NavigateAsync<TViewModel>() where TViewModel : ViewModelBase
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             window.MainFrame.Navigate(_viewModelToViewMappings[typeof(TViewModel)], null, new SuppressNavigationTransitionInfo());
+
+            await Task.CompletedTask;
         }
 
-        public void GoBack()
+        public async Task GoBackAsync()
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             window.MainFrame.GoBack();
+
+            await Task.CompletedTask;
         }
     }
 }

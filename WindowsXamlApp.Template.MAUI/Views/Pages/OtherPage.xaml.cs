@@ -11,9 +11,4 @@ public partial class OtherPage : ContentPage
 
 		this.BindingContext = Ioc.Default.GetRequiredService<OtherPageViewModel>();
 	}
-
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-		await Shell.Current.GoToAsync("..");
-    }
 }

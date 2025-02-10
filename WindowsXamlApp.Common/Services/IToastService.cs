@@ -8,6 +8,6 @@ namespace WindowsXamlApp.Common.Services
 {
     public interface IToastService
     {
-        void Show(string message, long duration = 3000, double fontSize = 16.0);
+        Task ShowAsync(string message, long duration = 3000, double fontSize = 16.0);
     }
 }

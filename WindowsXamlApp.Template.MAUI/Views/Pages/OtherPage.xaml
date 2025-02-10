@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WindowsXamlApp.Template.MAUI.Views.Pages.OtherPage">
     <Grid>
-        <Button Text="Go Back" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Button_Clicked" />
+        <Button Text="Go Back" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding GoBackCommand}" />
     </Grid>
 </ContentPage>

@@ -40,7 +40,7 @@ namespace WindowsXamlApp.Template.WinUI
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             Ioc.Default.GetRequiredService<MainWindow>().Activate();
-            Ioc.Default.GetRequiredService<IPageService>().Navigate<IndexPageViewModel>();
+            Ioc.Default.GetRequiredService<IPageService>().NavigateAsync<IndexPageViewModel>();
         }
     }
 }

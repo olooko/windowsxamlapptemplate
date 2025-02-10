@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using System.Windows.Controls;
 using WindowsXamlApp.Common.Services;
+using WindowsXamlApp.Common.ViewModels;
 
 namespace WindowsXamlApp.Template.WPF.Services
 {
@@ -12,7 +13,7 @@ namespace WindowsXamlApp.Template.WPF.Services
 
         public static void AddSingleton<TPage, TPageViewModel>(IServiceCollection services)
             where TPage : Page
-            where TPageViewModel : INotifyPropertyChanged
+            where TPageViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TPageViewModel), typeof(TPage));
 
@@ -22,7 +23,7 @@ namespace WindowsXamlApp.Template.WPF.Services
 
         public static void AddTransient<TPage, TPageViewModel>(IServiceCollection services)
             where TPage : Page
-            where TPageViewModel : INotifyPropertyChanged
+            where TPageViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TPageViewModel), typeof(TPage));
 
@@ -30,18 +31,22 @@ namespace WindowsXamlApp.Template.WPF.Services
             services.AddTransient(typeof(TPageViewModel));
         }
 
-        public void Navigate<TViewModel>() where TViewModel : INotifyPropertyChanged
+        public async Task NavigateAsync<TViewModel>() where TViewModel : ViewModelBase
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             var page = Ioc.Default.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as Page;
 
             window.MainFrame.Navigate(page);
+
+            await Task.CompletedTask;
         }
 
-        public void GoBack()
+        public async Task GoBackAsync()
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             window.MainFrame.GoBack();
+
+            await Task.CompletedTask;
         }
     }
 }

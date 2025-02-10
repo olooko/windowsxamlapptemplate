@@ -4,10 +4,12 @@ namespace WindowsXamlApp.Template.MAUI.Services
 {
     public sealed class ToastService : IToastService
     {
-        public void Show(string message, long duration, double fontSize)
+        public async Task ShowAsync(string message, long duration, double fontSize)
         {
             var window = App.Current!.Windows[0];
             window.AddOverlay(new ToastWindowOverlay(window, message, duration, fontSize));
+
+            await Task.CompletedTask;
         }
 
         private class ToastWindowOverlay : WindowOverlay

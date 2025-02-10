@@ -8,7 +8,7 @@ namespace WindowsXamlApp.Template.WPF.Services
 {
     public class ToastService : IToastService
     {
-        public void Show(string message, long duration, double fontSize)
+        public async Task ShowAsync(string message, long duration, double fontSize)
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             var textblock = (window.ToastContent.Child as TextBlock)!;
@@ -36,6 +36,8 @@ namespace WindowsXamlApp.Template.WPF.Services
             showToastStoryBoard.Children.Add(doubleAnimation);
             showToastStoryBoard.Completed += ShowToastStoryBoard_Completed;
             showToastStoryBoard.Begin(window.ToastContent);
+
+            await Task.CompletedTask;
         }
 
         private void ShowToastStoryBoard_Completed(object? sender, EventArgs e)

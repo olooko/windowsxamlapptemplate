@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WindowsXamlApp.Common.ViewModels;
 
 namespace WindowsXamlApp.Common.Services
 {
     public interface IPageService
     {
-        void Navigate<TViewModel>() where TViewModel : INotifyPropertyChanged;
-        void GoBack();
+        Task NavigateAsync<TViewModel>() where TViewModel : ViewModelBase;
+        Task GoBackAsync();
     }
 }

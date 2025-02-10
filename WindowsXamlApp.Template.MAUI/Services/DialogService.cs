@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using System.ComponentModel;
 using WindowsXamlApp.Common.Services;
+using WindowsXamlApp.Common.ViewModels;
 using WindowsXamlApp.Template.MAUI.Controls;
 
 namespace WindowsXamlApp.Template.MAUI.Services
@@ -11,7 +11,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
         public static void AddSingleton<TDialog, TDialogViewModel>(IServiceCollection services)
             where TDialog : UserDialog
-            where TDialogViewModel : INotifyPropertyChanged
+            where TDialogViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
 
@@ -21,7 +21,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
 
         public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)
             where TDialog : UserDialog
-            where TDialogViewModel : INotifyPropertyChanged
+            where TDialogViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
 
@@ -29,7 +29,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
             services.AddTransient(typeof(TDialogViewModel));
         }
 
-        public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged
+        public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : ViewModelBase
         {
             bool result = false;
 

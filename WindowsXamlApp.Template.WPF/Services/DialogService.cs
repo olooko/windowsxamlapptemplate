@@ -1,10 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Windows;
-using System.Windows.Controls;
 using WindowsXamlApp.Common.Services;
+using WindowsXamlApp.Common.ViewModels;
 using WindowsXamlApp.Template.WPF.Controls;
 
 namespace WindowsXamlApp.Template.WPF.Services
@@ -15,7 +14,7 @@ namespace WindowsXamlApp.Template.WPF.Services
 
         public static void AddSingleton<TDialog, TDialogViewModel>(IServiceCollection services)
             where TDialog : UserDialog
-            where TDialogViewModel : INotifyPropertyChanged
+            where TDialogViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
 
@@ -25,7 +24,7 @@ namespace WindowsXamlApp.Template.WPF.Services
 
         public static void AddTransient<TDialog, TDialogViewModel>(IServiceCollection services)
             where TDialog : UserDialog
-            where TDialogViewModel : INotifyPropertyChanged
+            where TDialogViewModel : ViewModelBase
         {
             _viewModelToViewMappings.Add(typeof(TDialogViewModel), typeof(TDialog));
 
@@ -33,7 +32,7 @@ namespace WindowsXamlApp.Template.WPF.Services
             services.AddTransient(typeof(TDialogViewModel));
         }
 
-        public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : INotifyPropertyChanged
+        public async Task<bool> ShowModalAsync<TViewModel>() where TViewModel : ViewModelBase
         {
             var window = Ioc.Default.GetRequiredService<MainWindow>();
             

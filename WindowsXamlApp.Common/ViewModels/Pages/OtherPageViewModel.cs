@@ -12,9 +12,9 @@ namespace WindowsXamlApp.Common.ViewModels.Pages
     public partial class OtherPageViewModel : ViewModelBase
     {
         [RelayCommand]
-        private void GoBack()
+        private async Task GoBack()
         {
-            Ioc.Default.GetRequiredService<IPageService>().GoBack();
+            await Ioc.Default.GetRequiredService<IPageService>().GoBackAsync();
         }
     }
 }

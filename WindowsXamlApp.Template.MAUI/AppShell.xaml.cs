@@ -7,9 +7,6 @@ namespace WindowsXamlApp.Template.MAUI
         public AppShell()
         {
             InitializeComponent();
-
-            Routing.RegisterRoute("IndexPage", typeof(IndexPage));
-            Routing.RegisterRoute("OtherPage", typeof(OtherPage));
         }
     }
 }
