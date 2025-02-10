@@ -33,10 +33,7 @@ namespace WindowsXamlApp.Template.MAUI.Services
         {
             bool result = false;
 
-            var window = App.Current!.Windows[0];
-
-            var currentPage = window.Page as ContentPage;
-
+            var currentPage = Shell.Current.CurrentPage;
             var userDialog = Ioc.Default.GetService(_viewModelToViewMappings[typeof(TViewModel)]) as UserDialog;
 
             if (currentPage != null && userDialog != null)
